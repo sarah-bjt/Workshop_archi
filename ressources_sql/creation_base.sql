@@ -58,7 +58,7 @@ CREATE TABLE t_education_educ (
     CONSTRAINT fk_education_cours FOREIGN KEY (crs_id) REFERENCES t_cours_crs(crs_id)
 );
 
-CREATE TABLE t_reponse_rpq (
+CREATE TABLE t_reponse_rps (
     rps_id INT AUTO_INCREMENT,
     rps_tps_reponse INT,
     rps_correction ENUM('PAS CORRIGE','VRAI','FAUX')
