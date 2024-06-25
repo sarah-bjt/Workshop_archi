@@ -1,1 +1,49 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profil</title>
+  </head>
+  <body>
+        <h1>Bonjour {{etudiants[1]}} {{etudiants[2]}}</h1>
+      <div>
+        <table>
+          <tr>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>Statut</th>
+          </tr>
+        <tr>
+          <td>{{util_id}}</td>
+          <td>{{etudiants[3]}}</td>
+          <td>{{etudiants[5]}}</td>
+        </tr>
+        <tr>
+          <td>
+            <form action="/profil" method="POST>
+              <label for="age">Nouvel âge</label>
+              <input type="number" name="age">
+              <input type="submit">
+            </form>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div>
+        <form action="/profil" method="POST>
+          <label for="nom">Nouveau nom</label>
+          <input type="varchar" name="nom">
+          <input type="submit">
+        </form>
+        <form action="/profil" method="POST>
+          <label for="prenom">Nouveau prénom</label>
+          <input type="varchar" name="prenom">
+          <input type="submit">
+        </form>
+      </div>
+      <div>
+        <a href="/suivi">Suivi</a>
+        <a href="/deconnexion">Se déconnecter</a>
+      </div>
+  </body>
+</html>
