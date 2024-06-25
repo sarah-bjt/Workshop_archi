@@ -60,7 +60,7 @@ CREATE TABLE t_education_educ (
 
 CREATE TABLE t_reponse_rps (
     rps_id INT AUTO_INCREMENT,
-    rps_tps_reponse INT,
+    rps_tps_passe INT,
     rps_correction ENUM('PAS CORRIGE','VRAI','FAUX')
     rps_commmentaire VARCHAR(300),
     exo_id INT,
