@@ -54,9 +54,9 @@ def suivi():
     result = mycursor.fetchall()
     mycursor.execute("SELECT SUM(rps_tps_passe) FROM t_cours_crs AS CRS JOIN t_exercice_exo AS EXO ON EXO.crs_id=CRS.crs_id JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id;")
     temps_total = mycursor.fetchone()
-    mycursor.execute("SELECT rps_date, SUM(rps_tps_passe) AS total_tps_passe FROM t_reponse_rps GROUP BY rps_date ORDER BY total_tps_passe DESC;")
-    temps_max = mycursor.fetchone()
-    return render_template('suivi.html', recapitulatif=result, temps_total=temps_total, temps_max=temps_max)
+    mycursor.execute("SELECT rps_date, SUM(rps_tps_passe) AS total_tps_passe, COUNT(DISTINCT exo_id) AS nombre_exercices FROM t_reponse_rps GROUP BY rps_date ORDER BY total_tps_passe DESC;")
+    max = mycursor.fetchone()
+    return render_template('suivi.html', recapitulatif=result, temps_total=temps_total, max=max)
 
 
 @app.route("/devoir", methods=["GET"])
