@@ -7,7 +7,7 @@ app = Flask(__name__)
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    # password=""
+    password="Jejxav-mahrag-0kivko",
     database="PANCAKES_LEARNING"
 )
 mycursor = mydb.cursor()
