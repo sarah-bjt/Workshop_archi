@@ -34,8 +34,14 @@ def connexion():
 def profil(util_id):
     mycursor.execute("SELECT * FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id':util_id})
     result = mycursor.fetchone()
+    if request.method == "POST" :
+        nouveau_age = request.form('age')
+        nouveau_classe = request.form('classe')
+        nouveau_nom = request.form('nom')
+        nouveau_prenom = request.form('prenom')
+        
     if result[5] == 'PROFESSEUR' :
-      return render_template('profil_prof.html')
+      return render_template('profil_prof.html', etudiants=result, util_id=util_id)
     else :
       return render_template('profil.html', etudiants=result, util_id=util_id)
 
