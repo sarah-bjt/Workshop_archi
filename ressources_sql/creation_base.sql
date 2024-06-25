@@ -44,7 +44,6 @@ CREATE TABLE t_exercice_exo (
     exo_id INT AUTO_INCREMENT,
     exo_nom VARCHAR(80),
     exo_niveau INT,
-    exo_tps_passe INT,
     exo_enonce VARCHAR(80),
     crs_id INT,
     CONSTRAINT pk_exercice PRIMARY KEY (exo_id),
@@ -57,4 +56,14 @@ CREATE TABLE t_education_educ (
     CONSTRAINT pk_education PRIMARY KEY (cpt_identifiant,crs_id),
     CONSTRAINT fk_education_compte FOREIGN KEY (cpt_identifiant) REFERENCES t_compte_cpt(cpt_identifiant),
     CONSTRAINT fk_education_cours FOREIGN KEY (crs_id) REFERENCES t_cours_crs(crs_id)
+);
+
+CREATE TABLE t_reponse_rps (
+    rps_id INT AUTO_INCREMENT,
+    rps_tps_reponse INT,
+    rps_correction ENUM('PAS CORRIGE','VRAI','FAUX')
+    rps_commmentair(80),
+    exo_id INT,
+    CONSTRAINT pk_reponse PRIMARY KEY (rps_id),
+    CONSTRAINT fk_reponse_exercice FOREIGN KEY (exo_id) REFERENCES t_exercice_exo(exo_id)
 );
