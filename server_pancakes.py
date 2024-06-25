@@ -56,7 +56,7 @@ def suivi():
     JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id
     GROUP BY CRS.crs_id")
     result = mycursor.fetchall()
-    return render_template('suivi.html')
+    return render_template('suivi.html', recapitulatif=result)
 
 
 @app.route("/devoir", methods=["GET"])
