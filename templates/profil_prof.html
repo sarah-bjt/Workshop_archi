@@ -42,14 +42,23 @@
         </form>
       </div>
       <div>
-        {% for etudiant in etudiants %}
-        <tr>
-          <td>{{etudiant[1]}}</td>
-          <td>{{etudiant[2]}}</td>
-          <td>{{etudiant[3]}}</td>
-          <td>{{etudiant[4]}}</td>
-        </tr>
-        {% endfor %}
+        <table border="1" width='100%'>
+          <tr>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Age</td>
+            <td>Classe</td>
+          </tr>
+          
+          {% for etudiant in etudiants %}
+          <tr>
+            <td>{{etudiant[1]}}</td>
+            <td>{{etudiant[2]}}</td>
+            <td>{{etudiant[3]}}</td>
+            <td>{{etudiant[4]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
       </div>
       <div>
         <a href="/suivi">Suivi</a>
