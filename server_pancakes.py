@@ -49,6 +49,13 @@ def profil(util_id):
 
 @app.route("/suivi", methods=["GET", "POST", "PUT", "DELETE"])
 def suivi():
+    mycursor.execute("
+    SELECT crs_nom, crs_semestre, SUM(exo_tps_passe) 
+    FROM t_cours_crs AS CRS
+    JOIN t_exercice_exo AS EXO ON EXO.crs_id=CRS.crs_id
+    JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id
+    GROUP BY CRS.crs_id")
+    result = mycursor.fetchall()
     return render_template('suivi.html')
 
 
