@@ -8,14 +8,15 @@
     <h1>Vos exercices</h1>
     <table border="1" width='100%'>
       <tr>
-
+        <td>Matière</td>
         <td>Nom</td>
         <td>Niveau</td>
         <td>Enoncé</td>
       </tr>
+      
       {% for exo in exos %}
       <tr>
-
+        <td>{{exo[0]}}</td>
         <td>{{exo[1]}}</td>
         <td>{{exo[2]}}</td>
         <td>{{exo[3]}}</td>
