@@ -5,17 +5,25 @@
     <title>Profil</title>
   </head>
   <body>
-        <h1>Bonjour {{util_id}}</h1>
+        <h1>Bonjour {{etudiants[1]}} {{etudiants[2]}}</h1>
       <div>
-        {% for etudiant in etudiants %}
+        <table>
+          <tr>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>Classe</th>
+            <th>Statut</th>
+          </tr>
         <tr>
-          <td>{{etudiant[1]}}</td>
-          <td>{{etudiant[2]}}</td>
-          <td>{{etudiant[3]}</td>
-          <td>{{etudiant[4]}</td>
-          <td>{{etudiant[5]}</td>
+          <td>{{util_id}}</td>
+          <td>{{etudiants[3]}}</td>
+          <td>{{etudiants[4]}}</td>
+          <td>{{etudiants[5]}}</td>
         </tr>
-        {% endfor %}
+        <tr>
+          <td></td>
+        </tr>
+      </table>
       </div>
       <div>
         <a href="/suivi">Suivi</a>
