@@ -32,4 +32,4 @@ def déconnexion():
   if request.method == 'GET' :
     return render_template('deconnexion.html')
   elif request.method == 'POST' :
-    return redirect(url_for('/'))
+    return redirect(url_for('accueil'))
