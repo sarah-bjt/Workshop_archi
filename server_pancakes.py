@@ -41,9 +41,9 @@ def profil(util_id):
         nouveau_prenom = request.form('prenom')
         
     if result[5] == 'PROFESSEUR' :
-        mycursor.execute("SELECT * FROM t_profil_pfl WHERE pfl.statut='ETUDIANT';", {'id':util_id})
+        mycursor.execute("SELECT * FROM t_profil_pfl WHERE pfl_statut='ETUDIANT';", {'id':util_id})
         result2 = mycursor.fetchall()
-        return render_template('profil_prof.html', etudiants=result2, util_id=util_id)
+        return render_template('profil_prof.html', professeur=result, etudiants=result2, util_id=util_id)
     else :
         return render_template('profil.html', etudiants=result, util_id=util_id)
 

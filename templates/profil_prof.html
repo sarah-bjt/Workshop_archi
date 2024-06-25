@@ -5,7 +5,7 @@
     <title>Profil</title>
   </head>
   <body>
-        <h1>Bonjour {{etudiants[1]}} {{etudiants[2]}}</h1>
+        <h1>Bonjour {{professeur[1]}} {{professeur[2]}}</h1>
       <div>
         <table>
           <tr>
@@ -15,8 +15,8 @@
           </tr>
         <tr>
           <td>{{util_id}}</td>
-          <td>{{etudiants[3]}}</td>
-          <td>{{etudiants[5]}}</td>
+          <td>{{professeur[3]}}</td>
+          <td>{{professeur[5]}}</td>
         </tr>
         <tr>
           <td>
@@ -44,7 +44,7 @@
       <div>
         {% for etudiant in etudiants %}
         <tr>
-          <td>{{etudiant[1]}</td>
+          <td>{{etudiant[1]}}</td>
           <td>{{etudiant[2]}}</td>
           <td>{{etudiant[3]}}</td>
           <td>{{etudiant[4]}}</td>
