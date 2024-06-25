@@ -6,11 +6,15 @@
   </head>
   <body>
       <div>
-        {% for cours in annee %}
         <tr>
-          <td>{{cours.nom}}</td>
-          <td>{{exercice.niveau}}</td>
-          <td>{{exercice.temps}}</td>
+          <td>Nom </td>
+          <td>Semestre</td>
+          <td>Temps passé à étudier</td>
+        {% for cours in recapitulatif %}
+        <tr>
+          <td>{{cours[1]}}</td>
+          <td>{{cours[2]}}</td>
+          <td>{{cours[3]}}</td>
         </tr>
         {% endfor %}
       </div>
