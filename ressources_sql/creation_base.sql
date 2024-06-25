@@ -45,7 +45,7 @@ CREATE TABLE t_exercice_exo (
     exo_nom VARCHAR(80),
     exo_niveau INT,
     exo_tps_passe INT,
-    exo_enoce VARCHAR(80),
+    exo_enonce VARCHAR(80),
     crs_id INT,
     CONSTRAINT pk_exercice PRIMARY KEY (exo_id),
     CONSTRAINT fk_exercice_cours FOREIGN KEY (crs_id) REFERENCES t_cours_crs(crs_id)
