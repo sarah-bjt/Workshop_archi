@@ -20,42 +20,25 @@
           <td>{{etudiants[4]}}</td>
           <td>{{etudiants[5]}}</td>
         </tr>
-        <tr>
-          <td></td>
-          <td>
-            <form action="/profil" method="POST>
-              <label for="age">Nouvel âge</label>
-              <input type="number" name="age">
-              <input type="submit">
-            </form>
-          </td>
-          <td>
-            <form action="/profil" method="POST>
-              <label for="classe">Nouvelle classe</label>
-              <input type="varchar" name="classe">
-              <input type="submit">
-            </form>
-          </td>
-        </tr>
       </table>
-      </div>
-      <div>
-        <table border="1" width='100%'>
-          <form action="/profil" method="POST>
-            <label for="nom">Nouveau nom</label>
-            <input type="varchar" name="nom">
-            <input type="submit">
-          </form>
-          <form action="/profil" method="POST>
-            <label for="prenom">Nouveau prénom</label>
-            <input type="varchar" name="prenom">
-            <input type="submit">
-          </form>
-        </table>
-      </div>
-      <div>
-        <a href="/suivi">Suivi</a>
-        <a href="/deconnexion">Se déconnecter</a>
-      </div>
+    </div>
+    <div>
+        <form action="/profil" method="POST>
+          <label for="age">Nouvel âge</label>
+          <input type="number" name="age">
+          <label for="classe">Nouvelle classe</label>
+          <input type="varchar" name="classe">
+          <label for="nom">Nouveau nom</label>
+          <input type="varchar" name="nom">
+          <label for="prenom">Nouveau prénom</label>
+          <input type="varchar" name="prenom">
+          <input type="submit">
+        </form>
+      </table>
+    </div>
+    <div>
+      <a href="/suivi">Suivi</a>
+      <a href="/deconnexion">Se déconnecter</a>
+    </div>
   </body>
 </html>
