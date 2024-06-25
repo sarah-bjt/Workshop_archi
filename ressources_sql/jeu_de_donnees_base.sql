@@ -10,7 +10,7 @@ INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_age, pfl_classe, pfl_statut, 
 INSERT INTO t_compte_cpt VALUES ('cherrier@mail.fr', 'tartiflette');
 INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_age, pfl_classe, pfl_statut, pfl_date_creation, cpt_identifiant) VALUES ('CHERRIER', 'Sylvain', NULL, NULL, 'PROFESSEUR', CURDATE(), 'cherrier@mail.fr');
 
-INSERT INTO cours_crs (crs_nom) VALUE ('PROGRAMATION WEB');
+INSERT INTO t_cours_crs (crs_nom) VALUE ('PROGRAMATION WEB');
 
-INSERT INTO t_exercice_exo (exo_nom, exo_niveau, exo_enonce, crs_id) VALUES ('EXO 1', '1', 'met en gras avec la balise <b>','0');
-INSERT INTO t_exercice_exo (exo_nom, exo_niveau, exo_enonce, crs_id) VALUES ('EXO 2', '1', 'met en italique avec la balise <i>','0');
+INSERT INTO t_exercice_exo (exo_nom, exo_niveau, exo_enonce, crs_id) VALUES ('EXO 1', '1', 'met en gras avec la balise <b>','1');
+INSERT INTO t_exercice_exo (exo_nom, exo_niveau, exo_enonce, crs_id) VALUES ('EXO 2', '1', 'met en italique avec la balise <i>','1');
