@@ -37,7 +37,7 @@ def profil(util_id):
         nouveau_classe = request.form['classe']
         nouveau_nom = request.form['nom']
         nouveau_prenom = request.form['prenom']
-        mycursor.execute("UPDATE t_profil_pfl SET pfl_nom=%(nnom)s,pfl_prenom=%(nprenom)s,pfl_age=%(nage)s,pfl_classe=%(nclasse)s WHERE pfl_id=%(id)s;", {'nnom':nouveau_nom, 'nprenom':nouveau_prenom, 'nage':nouveau_age, 'nclasse':nouveau_classe, 'id':util_id})
+        mycursor.execute("UPDATE t_profil_pfl SET pfl_nom=%(nnom)s,pfl_prenom=%(nprenom)s,pfl_age=%(nage)s,pfl_classe=%(nclasse)s WHERE cpt_identifiant=%(id)s;", {'nnom':nouveau_nom, 'nprenom':nouveau_prenom, 'nage':nouveau_age, 'nclasse':nouveau_classe, 'id':util_id})
         mydb.commit()
         mycursor.execute("SELECT * FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id': util_id})
         result = mycursor.fetchone()
