@@ -41,6 +41,13 @@ def profil(util_id):
 def suivi():
     return render_template('suivi.html')
 
+
+@app.route("/devoir", methods=["GET"])
+def devoir():
+    mycursor.execute("SELECT * FROM t_exerecice_exo)
+    result = mycursor.fetchall()
+    return render_template('entrainement.html',exo=result)
+
 @app.route("/deconnexion", methods=['GET', 'POST'])
 def déconnexion():
   if request.method == 'GET' :
