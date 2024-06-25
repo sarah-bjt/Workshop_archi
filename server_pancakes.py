@@ -35,7 +35,9 @@ def profil(util_id):
     mycursor.execute("SELECT * FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id':util_id})
     result = mycursor.fetchone()
     if result[5] == 'PROFESSEUR' :
-      return render_template('profil_prof.html')
+        mycursor.execute("SELECT * FROM t_profil_pfl WHERE statut='ETUDIANT';", {'id':util_id})
+        result2 = mycursor.fetchall()
+      return render_template('profil_prof.html', etudiants=result2)
     else :
       return render_template('profil.html', etudiants=result, util_id=util_id)
 
