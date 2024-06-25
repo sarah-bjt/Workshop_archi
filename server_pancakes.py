@@ -21,3 +21,10 @@ def connexion():
 @app.route("/profil/<util_id>", methods=["GET","POST"])
 def profil():
     return render_template('profil.html')
+
+@app.route("/deconnexion", methods=['GET', 'POST'])
+def déconnexion():
+  if request.method == 'GET' :
+    return render_template('deconnexion.html')
+  elif request.method == 'POST' :
+    return redirect(url_for(''))
