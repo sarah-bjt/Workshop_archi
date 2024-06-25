@@ -4,6 +4,7 @@ import mysql.connector
 
 app = Flask(__name__)
 
+etudiants=[{"name":"Bonnot", "surname": "Théo", "temps":"35h"}, {"name":"Beaujault", "surname":"Sarah", "temps":"10h"}]
 
 @app.route("/")
 def accueil():
@@ -19,5 +20,5 @@ def connexion():
     return render_template('connexion.html')
 
 @app.route("/profil/<util_id>", methods=["GET","POST"])
-def profil():
-    return render_template('profil.html')
+def profil(util_id):
+    return render_template('profil.html', etudiants=etudiants, util_id=util_id)
