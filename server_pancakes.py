@@ -4,8 +4,16 @@ import mysql.connector
 
 app = Flask(__name__)
 
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    # password=""
+    database="PANCAKES_LEARNING"
+)
+mycursor = mydb.cursor()
+
 etudiants=[{"name":"Bonnot", "surname": "Théo", "temps":"35h"}, {"name":"Beaujault", "surname":"Sarah", "temps":"10h"}]
-exo = [{"nom":"exo 2 chapitre 5", "niveau":2, "temps":0.5, "enonce":"divise pas 3 la liste suivante : 3, 23,30", "numero du cours : 5},{"nom":"exo 3 chapitre 5", "niveau":2, "temps":0.5, "enonce":"multiplie pas 3 la liste suivante : 3, 23,30", "numero du cours : 5}
+exo = [{"nom":"exo 2 chapitre 5", "niveau":2, "temps":0.5, "enonce":"divise pas 3 la liste suivante : 3, 23,30", "numero du cours : 5},{"nom":"exo 3 chapitre 5", "niveau":2, "temps":0.5, "enonce":"multiplie pas 3 la liste suivante : 3, 23,30", "numero du cours : 5}]
 
 
 @app.route("/")
