@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Profil</title>
+    <title>Suivi</title>
   </head>
   <body>
       <div>
-        {% for exercice in exercices %}
+        {% for cours in annee %}
         <tr>
-          <td>{{exercice.name}}</td>
+          <td>{{cours.nom}}</td>
           <td>{{exercice.niveau}}</td>
           <td>{{exercice.temps}}</td>
         </tr>

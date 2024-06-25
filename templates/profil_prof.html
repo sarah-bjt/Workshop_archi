@@ -42,6 +42,16 @@
         </form>
       </div>
       <div>
+        {% for etudiant in etudiants %}
+        <tr>
+          <td>{{etudiant[1]}</td>
+          <td>{{etudiant[2]}}</td>
+          <td>{{etudiant[3]}}</td>
+          <td>{{etudiant[4]}}</td>
+        </tr>
+        {% endfor %}
+      </div>
+      <div>
         <a href="/suivi">Suivi</a>
         <a href="/deconnexion">Se déconnecter</a>
       </div>
