@@ -20,27 +20,10 @@
           <td>{{etudiants[4]}}</td>
           <td>{{etudiants[5]}}</td>
         </tr>
-        <tr>
-          <td></td>
-          <td>
-            <form action="/profil" method="POST>
-              <label for="age">Nouvel âge</label>
-              <input type="number" name="age">
-              <input type="submit">
-            </form>
-          </td>
-          <td>
-            <form action="/profil" method="POST>
-              <label for="classe">Nouvelle classe</label>
-              <input type="varchar" name="classe">
-              <input type="submit">
-            </form>
-          </td>
-        </tr>
       </table>
     </div>
     <div>
-        <form action="/profil" method="POST>
+        <form action="/profil/{{util_id}}" method="POST">
           <label for="age">Nouvel âge</label>
           <input type="number" name="age">
           <label for="classe">Nouvelle classe</label>
