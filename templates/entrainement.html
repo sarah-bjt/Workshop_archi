@@ -2,8 +2,26 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Entrainement</title>
+    <title>Devoir/title>
   </head>
   <body>
+    <h1>Vos exercices</h1>
+    <table border="1" width='100%'>
+      <tr>
+        <td>Cours</td>
+        <td>Nom</td>
+        <td>Niveau</td>
+        <td>Enoncé/td>
+      </tr>
+      {% for exo in exos %}
+      <tr>
+        <td>{{exo.cours}}</td>
+        <td>{{exo.nom}}</td>
+        <td>{{exo.niveau}}</td>
+        <td>{{exo.enonce}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="/">Retour à la page d'accueil</a>
   </body>
 </html>
