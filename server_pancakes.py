@@ -35,7 +35,10 @@ def connexion():
 def profil(util_id):
     mycursor.execute("SELECT * FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id':util_id})
     result = mycursor.fetchone()
-    return render_template('profil.html', etudiants=result, util_id=util_id)
+    if result[5] == 'PROFESSEUR' :
+      return render_template('profil_prof.html')
+    else :
+      return render_template('profil.html', etudiants=result, util_id=util_id)
 
 @app.route("/suivi", methods=["GET", "POST", "PUT", "DELETE"])
 def suivi():
