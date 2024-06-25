@@ -46,7 +46,7 @@ def suivi():
 def devoir():
     mycursor.execute("SELECT * FROM t_exercice_exo;")
     result = mycursor.fetchall()
-    return render_template('entrainement.html',exos=result)
+    return render_template('devoir.html',exos=result)
 
 @app.route("/deconnexion", methods=['GET', 'POST'])
 def déconnexion():
