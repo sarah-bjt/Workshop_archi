@@ -12,8 +12,6 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-#exo = [{"nom":"exo 2 chapitre 5", "niveau":"2", "temps":"0.5", "enonce":"divise pas 3 la liste suivante : 3, 23,30", "numero du cours : "5"},{"nom":"exo 3 chapitre 5", "niveau":2, "temps":"0.5", "enonce":"multiplie pas 3 la liste suivante : 3, 23,30", "numero du cours : "5"}]
-
 
 @app.route("/")
 def accueil():
@@ -54,7 +52,9 @@ def profil(util_id):
 def suivi():
     mycursor.execute("SELECT crs_nom, crs_semestre, SUM(rps_tps_passe) FROM t_cours_crs AS CRS JOIN t_exercice_exo AS EXO ON EXO.crs_id=CRS.crs_id JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id GROUP BY CRS.crs_id ;")
     result = mycursor.fetchall()
-    return render_template('suivi.html', recapitulatif=result)
+    mycursor.execute("SELECT SUM(rps_tps_passe) FROM t_cours_crs AS CRS JOIN t_exercice_exo AS EXO ON EXO.crs_id=CRS.crs_id JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id;")
+    temps_total = mycursor.fetchone()
+    return render_template('suivi.html', recapitulatif=result, temps_total=temps_total)
 
 
 @app.route("/devoir", methods=["GET"])
