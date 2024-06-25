@@ -20,8 +20,8 @@ def connexion():
     return render_template('connexion.html')
 
 @app.route("/profil/<util_id>", methods=["GET","POST"])
-def profil():
-    return render_template('profil.html')
+def profil(util_id):
+    return render_template('profil.html', etudiants=etudiants, util_id=util_id)
 
 @app.route("/deconnexion", methods=['GET', 'POST'])
 def déconnexion():
