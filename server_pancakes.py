@@ -23,9 +23,13 @@ def connexion():
 def profil(util_id):
     return render_template('profil.html', etudiants=etudiants, util_id=util_id)
 
+@app.route("/suivi", methods=["GET", "POST", "PUT", "DELETE"])
+def suivi():
+    return render_template('suivi.html')
+
 @app.route("/deconnexion", methods=['GET', 'POST'])
 def déconnexion():
   if request.method == 'GET' :
     return render_template('deconnexion.html')
   elif request.method == 'POST' :
-    return redirect(url_for(''))
+    return redirect(url_for('/'))
