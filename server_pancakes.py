@@ -25,7 +25,9 @@ def connexion():
     if request.method == "POST" :
         identifiant = request.form['email']
         password = request.form['password']
-        if identifiant == 'Bonnot.Theo@mail.com' and password == '666' :
+        mycursor.execute("SELECT * FROM t_compte_cpt WHERE cpt_identifiant=%(id)s;", {'id':identifiant})
+        result = mycursor.fetchone()
+        if result and password == result[1] :
             return redirect(url_for('profil', util_id=identifiant))
     return render_template('connexion.html')
 
