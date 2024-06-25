@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profil</title>
+  </head>
+  <body>
+      <div>
+        {% for etudiant in etudiants %}
+        <tr>
+          <td>{{etudiant.name}}</td>
+          <td>{{etudiant.surname}}</td>
+          <td>{{etudiant.temps}}</td>
+        </tr>
+        {% endfor %}
+      </div>
+      <div>
+        <a href="/suivi.html">Suivi</a>
+      </div>
+  </body>
+</html>

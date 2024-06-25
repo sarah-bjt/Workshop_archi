@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profil</title>
+  </head>
+  <body>
+      <div>
+        {% for exercice in exercices %}
+        <tr>
+          <td>{{exercice.name}}</td>
+          <td>{{exercice.niveau}}</td>
+          <td>{{exercice.temps}}</td>
+        </tr>
+        {% endfor %}
+      </div>
+      <div>
+        <a href="/profil.html">Suivi</a>
+      </div>
+  </body>
+</html>
