@@ -7,7 +7,7 @@
   <body>
         <h1>Bonjour {{professeur[1]}} {{professeur[2]}}</h1>
       <div>
-        <table>
+        <table border="1" width='100%'>
           <tr>
             <th>Mail</th>
             <th>Age</th>
@@ -30,16 +30,18 @@
       </table>
       </div>
       <div>
-        <form action="/profil" method="POST>
-          <label for="nom">Nouveau nom</label>
-          <input type="varchar" name="nom">
-          <input type="submit">
-        </form>
-        <form action="/profil" method="POST>
-          <label for="prenom">Nouveau prénom</label>
-          <input type="varchar" name="prenom">
-          <input type="submit">
-        </form>
+        <table border="1" width='100%'>
+          <form action="/profil" method="POST>
+            <label for="nom">Nouveau nom</label>
+            <input type="varchar" name="nom">
+            <input type="submit">
+          </form>
+          <form action="/profil" method="POST>
+            <label for="prenom">Nouveau prénom</label>
+            <input type="varchar" name="prenom">
+            <input type="submit">
+          </form>
+        </table>
       </div>
       <div>
         <table border="1" width='100%'>
