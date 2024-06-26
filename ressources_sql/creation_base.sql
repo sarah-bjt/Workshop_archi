@@ -62,7 +62,8 @@ CREATE TABLE t_reponse_rps (
     rps_id INT AUTO_INCREMENT,
     rps_tps_passe INT,
     rps_correction ENUM('PAS CORRIGE','VRAI','FAUX'),
-    rps_commmentaire VARCHAR(300),
+    rps_commentaire VARCHAR(300),
+    rps_date DATE,
     exo_id INT,
     CONSTRAINT pk_reponse PRIMARY KEY (rps_id),
     CONSTRAINT fk_reponse_exercice FOREIGN KEY (exo_id) REFERENCES t_exercice_exo(exo_id)
