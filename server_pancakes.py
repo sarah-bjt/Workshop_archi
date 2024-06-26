@@ -48,13 +48,13 @@ def profil(util_id):
     else :
         return render_template('profil.html', etudiants=result, util_id=util_id)
 
-@app.route("/suivi", methods=["GET", "POST", "PUT", "DELETE"])
-def suivi():
+@app.route("/suivi/<util_id>", methods=["GET", "POST", "PUT", "DELETE"])
+def suivi(util_id):
     mycursor.execute("SELECT crs_nom, crs_semestre, SUM(rps_tps_passe) FROM t_cours_crs AS CRS JOIN t_exercice_exo AS EXO ON EXO.crs_id=CRS.crs_id JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id GROUP BY CRS.crs_id ;")
     result = mycursor.fetchall()
     mycursor.execute("SELECT SUM(rps_tps_passe) FROM t_cours_crs AS CRS JOIN t_exercice_exo AS EXO ON EXO.crs_id=CRS.crs_id JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id;")
     temps_total = mycursor.fetchone()
-    return render_template('suivi.html', recapitulatif=result, temps_total=temps_total)
+    return render_template('suivi.html', recapitulatif=result, temps_total=temps_total, util_id=util_id)
 
 
 @app.route("/devoir", methods=["GET"])
