@@ -74,13 +74,14 @@ def déconnexion():
 
 @app.route("/creation", methods=['GET', 'POST'])
 def creation_compte() :
-  if request.method=="POST" :
-    email = request.form['email']
-    name = request.form['name']
-    surname = request.form['surname']
-    password = request.form['password']
-    mycursor.execute("INSERT INTO t_compte_cpt VALUES (%(em)s, %(pa)s)", {'em':email, 'pa':password})
-    mydb.commit()
-    mycursor.execute("INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_statut, cpt_identifiant) VALUES (%(na)s, %(su)s, 'ETUDIANT', %(em)s)", {'na':name, 'su':surname, 'em':email})
-    mydb.commit()
-    return redirect(url_for('/profil', util_id=email))
+    if request.method=="POST" :
+        email = request.form['email']
+        name = request.form['name']
+        surname = request.form['surname']
+        password = request.form['password']
+        mycursor.execute("INSERT INTO t_compte_cpt VALUES (%(em)s, %(pa)s)", {'em':email, 'pa':password})
+        mydb.commit()
+        mycursor.execute("INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_statut, cpt_identifiant) VALUES (%(na)s, %(su)s, 'ETUDIANT', %(em)s)", {'na':name, 'su':surname, 'em':email})
+        mydb.commit()
+        return redirect(url_for('profil', util_id=email))
+    return render_template('creation.html')
