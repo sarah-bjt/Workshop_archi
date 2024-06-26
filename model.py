@@ -30,7 +30,7 @@ def recuperation_etudiants():
     mycursor.execute("SELECT * FROM t_profil_pfl WHERE pfl_statut='ETUDIANT';")
     return mycursor.fetchall()
 
-def recapitulatif_cours_temps():
+def recapitulatif_cours_temps(user_id):
     mycursor.execute("SELECT crs_nom, crs_semestre, SUM(rps_tps_passe) FROM t_reponse_rps AS RPS JOIN t_exercice_exo AS EXO ON RPS.exo_id=EXO.exo_id JOIN t_cours_crs AS CRS ON EXO.crs_id=CRS.crs_id JOIN t_education_educ AS EDUC ON CRS.crs_id=EDUC.crs_id JOIN t_compte_cp AS CPT ON EDUC.cpt_identifiant=CPT.cpt_identifiant JOIN  t_profil_plf AS PLF ON CPT.cpt_identifiant=PLF.cpt_identifiant WHERE cpt_identifiant=%(id)s, GROUP BY CRS.crs_id ;", {'id': user_id})
     return mycursor.fetchall()
 
