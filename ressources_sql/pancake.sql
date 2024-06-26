@@ -26,7 +26,7 @@ CREATE TABLE `t_compte_cpt` (
   `cpt_identifiant` varchar(80) NOT NULL,
   `cpt_mdp` char(32) DEFAULT NULL,
   PRIMARY KEY (`cpt_identifiant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `t_cours_crs` (
   `crs_date_creation` date DEFAULT NULL,
   `crs_descriptif` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`crs_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `t_education_educ` (
   KEY `fk_education_cours` (`crs_id`),
   CONSTRAINT `fk_education_compte` FOREIGN KEY (`cpt_identifiant`) REFERENCES `t_compte_cpt` (`cpt_identifiant`),
   CONSTRAINT `fk_education_cours` FOREIGN KEY (`crs_id`) REFERENCES `t_cours_crs` (`crs_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `t_exercice_exo` (
   PRIMARY KEY (`exo_id`),
   KEY `fk_exercice_cours` (`crs_id`),
   CONSTRAINT `fk_exercice_cours` FOREIGN KEY (`crs_id`) REFERENCES `t_cours_crs` (`crs_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `t_profil_pfl` (
   PRIMARY KEY (`pfl_id`),
   KEY `fk_profil_compte` (`cpt_identifiant`),
   CONSTRAINT `fk_profil_compte` FOREIGN KEY (`cpt_identifiant`) REFERENCES `t_compte_cpt` (`cpt_identifiant`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `t_reponse_rps` (
   PRIMARY KEY (`rps_id`),
   KEY `fk_reponse_exercice` (`exo_id`),
   CONSTRAINT `fk_reponse_exercice` FOREIGN KEY (`exo_id`) REFERENCES `t_exercice_exo` (`exo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,7 +187,7 @@ CREATE TABLE `t_ressource_rsc` (
   PRIMARY KEY (`rsc_id`),
   KEY `fk_ressource_cours` (`crs_id`),
   CONSTRAINT `fk_ressource_cours` FOREIGN KEY (`crs_id`) REFERENCES `t_cours_crs` (`crs_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
