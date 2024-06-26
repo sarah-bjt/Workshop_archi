@@ -40,13 +40,13 @@ def profil(util_id):
 
 @app.route("/suivi/<util_id>", methods=["GET", "POST", "PUT", "DELETE"])
 def suivi(util_id):
-    result = model.recapitulatif_cours_temps()
+    result = model.recapitulatif_cours_temps(util_id)
     temps_total = model.temps_total()
     return render_template('suivi.html', recapitulatif=result, temps_total=temps_total, util_id=util_id)
 
 @app.route("/suivi_prof/<etud_id>/<prof_id>", methods=["GET", "POST", "PUT", "DELETE"])
 def suivi_prof(etud_id, prof_id):
-    result = model.recapitulatif_cours_temps()
+    result = model.recapitulatif_cours_temps(etud_id)
     temps_total = model.temps_total()
     return render_template('suivi_prof.html', recapitulatif=result, temps_total=temps_total, util_id=prof_id)
 
