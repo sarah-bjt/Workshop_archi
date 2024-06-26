@@ -40,6 +40,7 @@
             <td>Prénom</td>
             <td>Age</td>
             <td>Classe</td>
+            <td>Suivi</td>
           </tr>
           
           {% for etudiant in etudiants %}
@@ -48,6 +49,7 @@
             <td>{{etudiant[2]}}</td>
             <td>{{etudiant[3]}}</td>
             <td>{{etudiant[4]}}</td>
+            <td><form><input type="submit" value="Suivi"/></form></td>
           </tr>
           {% endfor %}
         </table>
