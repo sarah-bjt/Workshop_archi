@@ -43,14 +43,14 @@ def suivi(util_id):
     result = model.recapitulatif_cours_temps(util_id)
     temps_total = model.temps_total(util_id)
     suivi_journalier = model.temps_journalier(util_id)
-    return render_template('suivi.html', recapitulatif=result, temps_total=temps_total, util_id=util_id)
+    return render_template('suivi.html', recapitulatif=result, temps_total=temps_total, suivi_journalier=suivi_journalier, util_id=util_id)
 
 @app.route("/suivi_prof/<etud_id>/<prof_id>", methods=["GET", "POST", "PUT", "DELETE"])
 def suivi_prof(etud_id, prof_id):
     result = model.recapitulatif_cours_temps(etud_id)
     temps_total = model.temps_total(etud_id)
     suivi_journalier = model.temps_journalier(etud_id)
-    return render_template('suivi_prof.html', recapitulatif=result, temps_total=temps_total, util_id=prof_id)
+    return render_template('suivi_prof.html', recapitulatif=result, temps_total=temps_total, suivi_journalier=suivi_journalier, util_id=prof_id)
 
 @app.route("/devoir", methods=["GET"])
 def devoir():
