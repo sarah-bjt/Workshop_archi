@@ -8,7 +8,7 @@
     <h1> {{nom_exo}}, niveau {{niveau_exo}}</h1>
     <p>{{enonce_exo}}</p>
 
-    <form action="/repondre" method="POST">
+    <form action="/repondre/{{util_id}}/{{exo_id}}" method="POST">
       <label for="temps">temps pour repondre (en minutes)
         <input type="number" name="temps"/>
       </label><br>
@@ -18,9 +18,9 @@
 
       <label for="correction">Correction</label>
       <select id="correction" name="correction">
-        <option value="NON CORRIGE" selected> Non corrigé </option>
-        <option value="VRAI"> Vrai </option>
-        <option value="FAUX"> Faux</option>
+        <option value="NON CORRIGE" selected>PAS CORRIGE</option>
+        <option value="VRAI">VRAI</option>
+        <option value="FAUX">FAUX</option>
         
       </select>
 

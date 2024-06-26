@@ -52,10 +52,10 @@ def suivi_prof(etud_id, prof_id):
     suivi_journalier = model.temps_journalier(etud_id)
     return render_template('suivi_prof.html', recapitulatif=result, temps_total=temps_total, util_id=prof_id)
 
-@app.route("/devoir", methods=["GET"])
-def devoir():
+@app.route("/devoir/<util_id>", methods=["GET"])
+def devoir(util_id):
     result = model.recuperation_exercices()
-    return render_template('devoir.html', exos=result)
+    return render_template('devoir.html', util_id=util_id, exos=result)
 
 @app.route("/deconnexion", methods=['GET', 'POST'])
 def déconnexion():
@@ -77,11 +77,11 @@ def creation_compte():
 
 @app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
 def repondre_exo(util_id,exo_id):
-    result= model.recuperation_exercice(exo_id)
+    #result= model.recuperation_exercice(exo_id)
     if request.method == "POST":
         temps = request.form['temps']
-        commentaire = request.form['comentaire']
+        commentaire = request.form['commentaire']
         correction = request.form['correction']
         model.repondre(temps,commentaire,correction,exo_id, util_id)
         return redirect(url_for('suivi', util_id=util_id))
-    return render_template('repondre.html', info_exo=result)
+    return render_template('reponse.html', util_id=util_id, exo_id=exo_id) #, info_exo=result

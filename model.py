@@ -39,7 +39,7 @@ def temps_total(user_id):
     return mycursor.fetchone()
 
 def temps_journalier(user_id):
-    mycursor.execute("SELECT rps_date, SUM(rps_date*exo_id) FROM t_exercice_exo AS EXO JOIN t_reponse_rps AS RPS ON EXO.exo_id=RPS.exo_id JOIN t_compte_cpt AS CPT ON RPS.cpt_id=CPT.cpt_id ORDER BY rps_date ASC WHERECPT.cpt_identifiant=%(id)s;", {'id': user_id})
+    mycursor.execute("SELECT RPS.rps_date, SUM(RPS.rps_date * EXO.exo_id) FROM t_exercice_exo AS EXO JOIN t_reponse_rps AS RPS ON EXO.exo_id = RPS.exo_id JOIN t_compte_cpt AS CPT ON RPS.cpt_identifiant = CPT.cpt_identifiant WHERE CPT.cpt_identifiant = %(id)s GROUP BY RPS.rps_date ORDER BY RPS.rps_date ASC;", {'id': user_id})
     return mycursor.fetchall()
 
 def recuperation_exercices():
@@ -53,10 +53,15 @@ def creation_compte_profil(email, password, name, surname):
     mydb.commit()
 
 def repondre(temps,commentaire,correction,exo_id, util_id):
-    mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, %(corr)s, %(comm)s, CURDATE(), %(ex)s, %(id)s)", {'tps': temps, 'comm': commentaire, 'corr':correction, 'ex': exo_id, 'id':util_id})
+    if correction == 'PAS CORRIGE' :
+        mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'PAS CORRIGE', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
+    elif correction == 'VRAI' :
+        mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'VRAI', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
+    elif correction == 'FAUX' :
+        mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'FAUX', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
     mydb.commit()
 
 
-def recuperation_exercice(id_exo):
-    mycursor.execute("SELECT * FROM t_exercice_exo; WHERE exo_id=id_exo)
-    return mycursor.fetchone()
+# def recuperation_exercice(id_exo):
+#     mycursor.execute("SELECT * FROM t_exercice_exo; WHERE exo_id=id_exo)
+#     return mycursor.fetchone()
