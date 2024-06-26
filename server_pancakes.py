@@ -75,10 +75,11 @@ def creation_compte():
 
 @app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
 def repondre_exo(util_id,exo_id):
+    result= model.recuperation_exercice
     if request.method == "POST":
         temps = request.form['temps']
         commentaire = request.form['comentaire']
         correction = request.form['correction']
         model.repondre(temps,commentaire,correction,exo_id, util_id)
         return redirect(url_for('suivi', util_id=util_id))
-    return render_template('repondre.html')
+    return render_template('repondre.html', info_exo=result)
