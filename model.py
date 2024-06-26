@@ -47,3 +47,7 @@ def creation_compte_profil(email, password, name, surname):
     mydb.commit()
     mycursor.execute("INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_statut, pfl_date, cpt_identifiant) VALUES (%(na)s, %(su)s, 'ETUDIANT', CURDATE(), %(em)s)", {'na': name, 'su': surname, 'em': email})
     mydb.commit()
+
+def repondre(temps,commentaire,correction,exo_id, util_id):
+    mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, %(corr)s, %(comm)s, CURDATE(), %(ex)s, %(id)s)", {'tps': temps, 'comm': commentaire, 'corr':correction, 'ex': exo_id, 'id':util_id})
+    mydb.commit()
