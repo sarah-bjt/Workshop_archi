@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{nom_exo}}</title>
+  </head>
+  <body>
+    <h1> {{nom_exo}}, niveau {{niveau_exo}}</h1>
+    <p>{{enonce_exo}}</p>
+
+    <form action="/repondre" method="POST">
+      <label for="temps">temps pour repondre (en minutes)
+        <input type="number" name="temps"/>
+      </label><br>
+      
+      <label for="commentaire">commentaire</label><br>
+      <textarea id="commentaire" name="commentaire" rows="10" cols="60">Session du {{date_exo}}</textarea><br>
+
+      <label for="correction">Correction</label>
+      <select id="correction" name="correction">
+        <option value="NON CORRIGE" selected> Non corrigé </option>
+        <option value="VRAI"> Vrai </option>
+        <option value="FAUX"> Faux</option>
+        
+      </select>
+
+      <input type="submit" value="Valider"/>
+    </form>
+    <div>
+      <a href="/profil/{{util_id}}">Profil</a>
+      <a href="/deconnexion">Se déconnecter</a>
+    </div>
+
+ </body>
+</html>
 
