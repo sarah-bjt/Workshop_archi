@@ -77,7 +77,7 @@ def creation_compte():
 
 @app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
 def repondre_exo(util_id,exo_id):
-    result= model.recuperation_exercice
+    result= model.recuperation_exercice(exo_id)
     if request.method == "POST":
         temps = request.form['temps']
         commentaire = request.form['comentaire']
