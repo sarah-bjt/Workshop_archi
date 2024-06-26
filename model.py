@@ -38,6 +38,10 @@ def temps_total(user_id):
     mycursor.execute("SELECT SUM(rps_tps_passe) FROM t_reponse_rps AS RPS JOIN t_exercice_exo AS EXO ON RPS.exo_id=EXO.exo_id JOIN t_cours_crs AS CRS ON EXO.crs_id=CRS.crs_id JOIN t_education_educ AS EDUC ON CRS.crs_id=EDUC.crs_id JOIN t_compte_cpt AS CPT ON EDUC.cpt_identifiant=CPT.cpt_identifiant JOIN t_profil_pfl AS PLF ON CPT.cpt_identifiant=PLF.cpt_identifiant WHERE CPT.cpt_identifiant=%(id)s;", {'id': user_id})
     return mycursor.fetchone()
 
+def temps_journalier(user_id):
+    mycursor.execute("SELECT rps_date, SUM(rps_date*exo_id) FROM t_exercice_exo AS EXO JOIN t_reponse_rps AS RPS ON EXO.exo_id=RPS.exo_id JOIN t_compte_cpt AS CPT ON RPS.cpt_id=CPT.cpt_id ORDER BY rps_date ASC WHERECPT.cpt_identifiant=%(id)s;", {'id': user_id})
+    return mycursor.fetchall()
+
 def recuperation_exercices():
     mycursor.execute("SELECT * FROM t_exercice_exo;")
     return mycursor.fetchall()
@@ -47,3 +51,12 @@ def creation_compte_profil(email, password, name, surname):
     mydb.commit()
     mycursor.execute("INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_statut, pfl_date, cpt_identifiant) VALUES (%(na)s, %(su)s, 'ETUDIANT', CURDATE(), %(em)s)", {'na': name, 'su': surname, 'em': email})
     mydb.commit()
+
+def repondre(temps,commentaire,correction,exo_id, util_id):
+    mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, %(corr)s, %(comm)s, CURDATE(), %(ex)s, %(id)s)", {'tps': temps, 'comm': commentaire, 'corr':correction, 'ex': exo_id, 'id':util_id})
+    mydb.commit()
+
+
+def recuperation_exercice(id_exo):
+    mycursor.execute("SELECT * FROM t_exercice_exo; WHERE exo_id=id_exo)
+    return mycursor.fetchone()
