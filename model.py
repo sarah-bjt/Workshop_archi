@@ -34,8 +34,8 @@ def recapitulatif_cours_temps(user_id):
     mycursor.execute("SELECT crs_nom, crs_semestre, SUM(rps_tps_passe) FROM t_reponse_rps AS RPS JOIN t_exercice_exo AS EXO ON RPS.exo_id=EXO.exo_id JOIN t_cours_crs AS CRS ON EXO.crs_id=CRS.crs_id JOIN t_education_educ AS EDUC ON CRS.crs_id=EDUC.crs_id JOIN t_compte_cp AS CPT ON EDUC.cpt_identifiant=CPT.cpt_identifiant JOIN  t_profil_plf AS PLF ON CPT.cpt_identifiant=PLF.cpt_identifiant WHERE cpt_identifiant=%(id)s, GROUP BY CRS.crs_id ;", {'id': user_id})
     return mycursor.fetchall()
 
-def temps_total():
-    mycursor.execute("SELECT SUM(rps_tps_passe) FROM t_cours_crs AS CRS JOIN t_exercice_exo AS EXO ON EXO.crs_id=CRS.crs_id JOIN t_reponse_rps AS RPS ON RPS.exo_id=EXO.exo_id;")
+def temps_total(user_id):
+    mycursor.execute("SELECT SUM(rps_tps_passe) FROM t_reponse_rps AS RPS JOIN t_exercice_exo AS EXO ON RPS.exo_id=EXO.exo_id JOIN t_cours_crs AS CRS ON EXO.crs_id=CRS.crs_id JOIN t_education_educ AS EDUC ON CRS.crs_id=EDUC.crs_id JOIN t_compte_cp AS CPT ON EDUC.cpt_identifiant=CPT.cpt_identifiant JOIN  t_profil_plf AS PLF ON CPT.cpt_identifiant=PLF.cpt_identifiant WHERE cpt_identifiant=%(id)s;" {'id': user_id})
     return mycursor.fetchone()
 
 def recuperation_exercices():
