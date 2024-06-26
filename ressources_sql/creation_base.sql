@@ -65,6 +65,15 @@ CREATE TABLE t_reponse_rps (
     rps_commentaire VARCHAR(300),
     rps_date DATE,
     exo_id INT,
+    cpt_identifiant VARCHAR(80),
     CONSTRAINT pk_reponse PRIMARY KEY (rps_id),
-    CONSTRAINT fk_reponse_exercice FOREIGN KEY (exo_id) REFERENCES t_exercice_exo(exo_id)
+    CONSTRAINT fk_reponse_exercice FOREIGN KEY (exo_id) REFERENCES t_exercice_exo(exo_id),
+    CONSTRAINT fk_reponse_compte FOREIGN KEY (cpt_identifiant) REFERENCES t_compte_cpt(cpt_identifiant)
 );
+
+ALTER TABLE t_reponse_rps ADD COLUMN cpt_identifiant VARCHAR(80);
+
+ALTER TABLE t_reponse_rps
+ADD CONSTRAINT fk_cpt_identifiant
+FOREIGN KEY (cpt_identifiant)
+REFERENCES t_compte_cp(cpt_identifiant);

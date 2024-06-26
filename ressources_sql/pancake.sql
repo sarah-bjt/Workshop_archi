@@ -157,9 +157,11 @@ CREATE TABLE `t_reponse_rps` (
   `rps_commentaire` varchar(300) DEFAULT NULL,
   `rps_date` date DEFAULT NULL,
   `exo_id` int DEFAULT NULL,
+  `cpt_identifiant` VARCHAR(80) DEFAULT NULL,
   PRIMARY KEY (`rps_id`),
   KEY `fk_reponse_exercice` (`exo_id`),
-  CONSTRAINT `fk_reponse_exercice` FOREIGN KEY (`exo_id`) REFERENCES `t_exercice_exo` (`exo_id`)
+  CONSTRAINT `fk_reponse_exercice` FOREIGN KEY (`exo_id`) REFERENCES `t_exercice_exo` (`exo_id`),
+  CONSTRAINT `fk_reponse_compte` FOREIGN KEY (`cpt_identifiant`) REFERENCES `t_compte_cpt` (`cpt_identifiant`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -168,7 +170,7 @@ CREATE TABLE `t_reponse_rps` (
 --
 
 /*!40000 ALTER TABLE `t_reponse_rps` DISABLE KEYS */;
-INSERT INTO `t_reponse_rps` VALUES (4,2,'PAS CORRIGE','hyper facile',NULL,1),(5,1,'PAS CORRIGE','un poil plus compliqué',NULL,2),(7,13,'PAS CORRIGE',NULL,NULL,3);
+INSERT INTO `t_reponse_rps` VALUES (4,2,'PAS CORRIGE','hyper facile',CURDATE(),1,'agathe@mail.fr'),(5,1,'PAS CORRIGE','un poil plus compliqué',CURDATE(),2,'agathe@mail.fr'),(7,13,'PAS CORRIGE',NULL,CURDATE(),3,'lison@mail.fr');
 /*!40000 ALTER TABLE `t_reponse_rps` ENABLE KEYS */;
 
 --

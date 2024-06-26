@@ -10,6 +10,12 @@ INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_age, pfl_classe, pfl_statut, 
 INSERT INTO t_compte_cpt VALUES ('cherrier@mail.fr', 'tartiflette');
 INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_age, pfl_classe, pfl_statut, pfl_date_creation, cpt_identifiant) VALUES ('CHERRIER', 'Sylvain', NULL, NULL, 'PROFESSEUR', CURDATE(), 'cherrier@mail.fr');
 
+INSERT INTO t_compte_cpt VALUES ('christian@mail.fr', 'miam');
+INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_age, pfl_classe, pfl_statut, pfl_date_creation, cpt_identifiant) VALUES ('AANTON', 'Christian', '21', 'IMAC2', 'ETUDIANT', CURDATE(), 'christian@mail.fr');
+
+INSERT INTO t_compte_cpt VALUES ('theo@mail.fr', 'noel');
+INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_age, pfl_classe, pfl_statut, pfl_date_creation, cpt_identifiant) VALUES ('AANTON', 'Christian', '21', 'IMAC2', 'ETUDIANT', CURDATE(), 'christian@mail.fr');
+
 INSERT INTO t_cours_crs (crs_nom) VALUE ('PROGRAMATION WEB');
 UPDATE t_cours_crs SET crs_semestre=1 WHERE crs_nom='PROGRAMATION WEB';
 
