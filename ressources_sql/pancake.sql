@@ -34,6 +34,7 @@ CREATE TABLE `t_compte_cpt` (
 --
 
 /*!40000 ALTER TABLE `t_compte_cpt` DISABLE KEYS */;
+INSERT INTO `t_compte_cpt` VALUES ('agathe@mail.fr','666'),('cherrier@mail.fr','tartiflette'),('lison@mail.fr','buck'),('sarah@mail.fr','bts');
 /*!40000 ALTER TABLE `t_compte_cpt` ENABLE KEYS */;
 
 --
@@ -50,7 +51,7 @@ CREATE TABLE `t_cours_crs` (
   `crs_date_creation` date DEFAULT NULL,
   `crs_descriptif` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`crs_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,6 +59,7 @@ CREATE TABLE `t_cours_crs` (
 --
 
 /*!40000 ALTER TABLE `t_cours_crs` DISABLE KEYS */;
+INSERT INTO `t_cours_crs` VALUES (1,'PROGRAMATION WEB',1,NULL,NULL),(2,'ARCHITECTURE ALGO',2,NULL,NULL);
 /*!40000 ALTER TABLE `t_cours_crs` ENABLE KEYS */;
 
 --
@@ -95,12 +97,12 @@ CREATE TABLE `t_exercice_exo` (
   `exo_id` int NOT NULL AUTO_INCREMENT,
   `exo_nom` varchar(80) DEFAULT NULL,
   `exo_niveau` int DEFAULT NULL,
-  `exo_enonce` varchar(80) DEFAULT NULL,
+  `exo_enonce` varchar(500) DEFAULT NULL,
   `crs_id` int DEFAULT NULL,
   PRIMARY KEY (`exo_id`),
   KEY `fk_exercice_cours` (`crs_id`),
   CONSTRAINT `fk_exercice_cours` FOREIGN KEY (`crs_id`) REFERENCES `t_cours_crs` (`crs_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,6 +110,7 @@ CREATE TABLE `t_exercice_exo` (
 --
 
 /*!40000 ALTER TABLE `t_exercice_exo` DISABLE KEYS */;
+INSERT INTO `t_exercice_exo` VALUES (1,'EXO 1',1,'met en gras avec la balise <b>',1),(2,'EXO 2',1,'met en italique avec la balise <i>',1),(3,'EXO 1',1,'Liste des profs qui dont le prénom est Pascale. Liste des prénoms. Liste des prénoms triés. Comment n’avoir qu’une seule fois chaque prénom ?',2);
 /*!40000 ALTER TABLE `t_exercice_exo` ENABLE KEYS */;
 
 --
@@ -129,7 +132,7 @@ CREATE TABLE `t_profil_pfl` (
   PRIMARY KEY (`pfl_id`),
   KEY `fk_profil_compte` (`cpt_identifiant`),
   CONSTRAINT `fk_profil_compte` FOREIGN KEY (`cpt_identifiant`) REFERENCES `t_compte_cpt` (`cpt_identifiant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +140,7 @@ CREATE TABLE `t_profil_pfl` (
 --
 
 /*!40000 ALTER TABLE `t_profil_pfl` DISABLE KEYS */;
+INSERT INTO `t_profil_pfl` VALUES (1,'JAN','Agathe',21,'IMAC1','ETUDIANT','2024-06-26','agathe@mail.fr'),(2,'BEAUJAULT','Sarah',21,'IMAC1','ETUDIANT','2024-06-26','sarah@mail.fr'),(3,'FORTIN','Lison',21,'IMAC1','ETUDIANT','2024-06-26','lison@mail.fr'),(4,'CHERRIER','Sylvain',NULL,NULL,'PROFESSEUR','2024-06-26','cherrier@mail.fr');
 /*!40000 ALTER TABLE `t_profil_pfl` ENABLE KEYS */;
 
 --
@@ -156,7 +160,7 @@ CREATE TABLE `t_reponse_rps` (
   PRIMARY KEY (`rps_id`),
   KEY `fk_reponse_exercice` (`exo_id`),
   CONSTRAINT `fk_reponse_exercice` FOREIGN KEY (`exo_id`) REFERENCES `t_exercice_exo` (`exo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,6 +168,7 @@ CREATE TABLE `t_reponse_rps` (
 --
 
 /*!40000 ALTER TABLE `t_reponse_rps` DISABLE KEYS */;
+INSERT INTO `t_reponse_rps` VALUES (4,2,'PAS CORRIGE','hyper facile',NULL,1),(5,1,'PAS CORRIGE','un poil plus compliqué',NULL,2),(7,13,'PAS CORRIGE',NULL,NULL,3);
 /*!40000 ALTER TABLE `t_reponse_rps` ENABLE KEYS */;
 
 --
@@ -201,4 +206,4 @@ CREATE TABLE `t_ressource_rsc` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-26 10:49:38
+-- Dump completed on 2024-06-26 11:18:48

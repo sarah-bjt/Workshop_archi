@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Suivi</title>
+  </head>
+  <body>
+    
+    <h2>Le best of de l'année</h2>
+    <p>Vous avez étudié {{temps_total}} minutes cette année</p>
+
+    
+      <div>
+        <table border="1" width='100%'>
+        <tr>
+          <td>Nom </td>
+          <td>Semestre</td>
+          <td>Temps passé à étudier</td>
+        </tr>
+        {% for cours in recapitulatif %}
+        <tr>
+          <td>{{cours[0]}}</td>
+          <td>{{cours[1]}}</td>
+          <td>{{cours[2]}}</td>
+        </tr>
+        {% endfor %}
+      </div>
+      <div>
+        <a href="/profil/{{util_id}}">Retour au profil</a>
+      </div>
+  </body>
+</html>
