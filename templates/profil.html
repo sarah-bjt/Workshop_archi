@@ -24,6 +24,7 @@
     </div>
     <div>
         <form action="/profil/{{util_id}}" method="POST">
+          <input type="hidden" name="form_type" value="modifier">
           <label for="nom">Nouveau nom</label>
           <input type="varchar" name="nom" value={{etudiants[1]}}>
           <label for="prenom">Nouveau prénom</label>
@@ -36,11 +37,12 @@
         </form>
       </table>
     </div>
-    <!-- <div>
-      <form action="/profil/{{util_id}}" method="DELETE">
+    <div>
+      <form action="/profil/{{util_id}}" method="POST">
+        <input type="hidden" name="form_type" value="supprimer">
         <input type="submit" value="Supprimer le compte">
       </form>
-    </div> -->
+    </div>
     <div>
       <a href="/suivi/{{util_id}}">Suivi</a>
       <a href="/deconnexion">Se déconnecter</a>

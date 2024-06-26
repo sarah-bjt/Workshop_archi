@@ -33,14 +33,22 @@ def profil(util_id):
     mycursor.execute("SELECT * FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id':util_id})
     result = mycursor.fetchone()
     if request.method == "POST" :
-        nouveau_age = request.form['age']
-        nouveau_classe = request.form['classe']
-        nouveau_nom = request.form['nom']
-        nouveau_prenom = request.form['prenom']
-        mycursor.execute("UPDATE t_profil_pfl SET pfl_nom=%(nnom)s,pfl_prenom=%(nprenom)s,pfl_age=%(nage)s,pfl_classe=%(nclasse)s WHERE cpt_identifiant=%(id)s;", {'nnom':nouveau_nom, 'nprenom':nouveau_prenom, 'nage':nouveau_age, 'nclasse':nouveau_classe, 'id':util_id})
-        mydb.commit()
-        mycursor.execute("SELECT * FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id': util_id})
-        result = mycursor.fetchone()
+        form_type = request.form['form_type']
+        if form_type == "modifier" :
+            nouveau_age = request.form['age']
+            nouveau_classe = request.form['classe']
+            nouveau_nom = request.form['nom']
+            nouveau_prenom = request.form['prenom']
+            mycursor.execute("UPDATE t_profil_pfl SET pfl_nom=%(nnom)s,pfl_prenom=%(nprenom)s,pfl_age=%(nage)s,pfl_classe=%(nclasse)s WHERE cpt_identifiant=%(id)s;", {'nnom':nouveau_nom, 'nprenom':nouveau_prenom, 'nage':nouveau_age, 'nclasse':nouveau_classe, 'id':util_id})
+            mydb.commit()
+            mycursor.execute("SELECT * FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id': util_id})
+            result = mycursor.fetchone()
+        elif form_type == "supprimer" :
+            mycursor.execute("DELETE FROM t_profil_pfl WHERE cpt_identifiant=%(id)s;", {'id':util_id})
+            mydb.commit()
+            mycursor.execute("DELETE FROM t_compte_cpt WHERE cpt_identifiant=%(id)s;", {'id':util_id})
+            mydb.commit()
+            return redirect(url_for('accueil'))
     if result[5] == 'PROFESSEUR' :
         mycursor.execute("SELECT * FROM t_profil_pfl WHERE pfl_statut='ETUDIANT';", {'id':util_id})
         result2 = mycursor.fetchall()
