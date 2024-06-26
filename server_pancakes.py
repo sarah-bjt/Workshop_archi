@@ -72,3 +72,13 @@ def creation_compte():
         model.creation_compte_profil(email, password, name, surname)
         return redirect(url_for('profil', util_id=email))
     return render_template('creation.html')
+
+@app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
+def repondre_exo(util_id,exo_id):
+    if request.method == "POST":
+        temps = request.form['temps']
+        commentaire = request.form['comentaire']
+        correction = request.form['correction']
+        model.repondre(temps,commentaire,correction,exo_id, util_id)
+        return redirect(url_for('suivi', util_id=util_id))
+    return render_template('repondre.html')
