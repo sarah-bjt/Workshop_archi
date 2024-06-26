@@ -4,7 +4,7 @@ mydb = mysql.connector.connect(
     host="localhost",
     user="root",
     password="Jejxav-mahrag-0kivko",
-    database="PancakeLearning"
+    database="PANCAKE_L"
 )
 mycursor = mydb.cursor()
 
