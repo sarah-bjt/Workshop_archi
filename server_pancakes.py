@@ -80,7 +80,7 @@ def creation_compte():
     
 @app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
 def repondre_exo(util_id,exo_id):
-    #result= model.recuperation_exercice(exo_id)
+    info_ex = model.info_exo(exo_id)
     reponses = model.toutes_les_reps(exo_id,util_id)
     if request.method == "POST":
         form_type = request.form['form_type']
@@ -95,7 +95,7 @@ def repondre_exo(util_id,exo_id):
             correction = request.form['correction']
             model.modifier_correction(util_id, reponse_id, correction,) 
             reponses = model.toutes_les_reps(exo_id,util_id)
-    return render_template('reponse.html', util_id=util_id, exo_id=exo_id, reponses=reponses)
+    return render_template('reponse.html', util_id=util_id, exo_id=exo_id, info_ex=exo, reponses=reponses)
 
 
 @app.route("/recompense")
