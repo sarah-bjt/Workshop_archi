@@ -57,7 +57,7 @@ def suivi_prof(etud_id, prof_id):
 
 @app.route("/devoir/<util_id>", methods=["GET"])
 def devoir(util_id):
-    result = model.recuperation_exercices()
+    result = model.recuperation_exercices(util_id)
     return render_template('devoir.html', util_id=util_id, exos=result)
 
 @app.route("/deconnexion", methods=['GET', 'POST'])
