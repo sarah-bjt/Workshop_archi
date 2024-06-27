@@ -52,7 +52,7 @@ def suivi_prof(etud_id, prof_id):
     temps_total = model.temps_total(etud_id)
     suivi_journalier = model.temps_journalier(etud_id)
     suivi_exo = model.temps_par_exo(etud_id)
-    etudiant = profil_par_id(etud_id)
+    etudiant = model.profil_par_id(etud_id)
     return render_template('suivi_prof.html', recapitulatif=result, temps_total=temps_total, suivi_journalier=suivi_journalier, suivi_exo=suivi_exo, etudiant=etudiant, util_id=prof_id)
 
 @app.route("/devoir/<util_id>", methods=["GET"])
