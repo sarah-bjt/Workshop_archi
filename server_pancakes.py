@@ -77,7 +77,7 @@ def creation_compte():
         return redirect(url_for('profil', util_id=email))
     return render_template('creation.html')
     
-app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
+@app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
 def repondre_exo(util_id,exo_id):
     #result= model.recuperation_exercice(exo_id)
     if request.method == "POST":
