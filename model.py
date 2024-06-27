@@ -31,7 +31,7 @@ def recuperation_etudiants():
     return mycursor.fetchall()
 
 def recapitulatif_cours_temps(user_id):
-    mycursor.execute("SELECT crs_nom, crs_semestre, SUM(rps_tps_passe) FROM t_reponse_rps AS RPS JOIN t_exercice_exo AS EXO ON RPS.exo_id=EXO.exo_id JOIN t_cours_crs AS CRS ON EXO.crs_id=CRS.crs_id JOIN t_education_educ AS EDUC ON CRS.crs_id=EDUC.crs_id JOIN t_compte_cpt AS CPT ON EDUC.cpt_identifiant=CPT.cpt_identifiant JOIN  t_profil_pfl AS PLF ON CPT.cpt_identifiant=PLF.cpt_identifiant WHERE CPT.cpt_identifiant=%(id)s GROUP BY CRS.crs_id ;", {'id': user_id})
+    mycursor.execute("SELECT crs_nom, crs_semestre, SUM(RPS.rps_tps_passe) FROM t_reponse_rps AS RPS JOIN t_exercice_exo AS EXO ON RPS.exo_id=EXO.exo_id JOIN t_cours_crs AS CRS ON EXO.crs_id=CRS.crs_id WHERE RPS.cpt_identifiant=%(id)s GROUP BY CRS.crs_id ;", {'id': user_id})
     return mycursor.fetchall()
 
 def temps_total(user_id):
@@ -53,11 +53,11 @@ def creation_compte_profil(email, password, name, surname):
     mydb.commit()
 
 def repondre(temps,commentaire,correction,exo_id, util_id):
-    if correction == 'PAS CORRIGE' :
+    if correction == '0' :
         mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'PAS CORRIGE', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
-    elif correction == 'VRAI' :
+    elif correction == '1' :
         mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'VRAI', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
-    elif correction == 'FAUX' :
+    elif correction == '2' :
         mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'FAUX', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
     mydb.commit()
 
