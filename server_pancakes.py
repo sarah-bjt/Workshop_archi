@@ -95,7 +95,7 @@ def repondre_exo(util_id,exo_id):
             correction = request.form['correction']
             model.modifier_correction(util_id, reponse_id, correction,) 
             reponses = model.toutes_les_reps(exo_id,util_id)
-    return render_template('reponse.html', util_id=util_id, exo_id=exo_id, info_ex=exo, reponses=reponses)
+    return render_template('reponse.html', util_id=util_id, exo_id=exo_id, exo=info_ex, reponses=reponses)
 
 
 @app.route("/recompense")

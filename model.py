@@ -47,7 +47,7 @@ def temps_par_exo(user_id) :
   return mycursor.fetchall()
 
 def recuperation_exercices(util_id):
-    mycursor.execute("SELECT * FROM t_exercice_exo AS EXO JOIN t_education_educ AS EDUC ON EDUC.crs_id= EXO.crs_id WHERE EDUC.cpt_identifiant = %(id)s;", {'id':util_id})
+    mycursor.execute("SELECT * FROM t_exercice_exo AS EXO JOIN t_cours_crs AS CRS ON EXO.crs_id=CRS.crs_id JOIN t_education_educ AS EDUC ON CRS.crs_id= EDUC.crs_id WHERE EDUC.cpt_identifiant = %(id)s;", {'id':util_id})
     return mycursor.fetchall()
 
 def creation_compte_profil(email, password, name, surname):
@@ -59,7 +59,7 @@ def creation_compte_profil(email, password, name, surname):
 
 def info_exo(exo_id):
     mycursor.execute("SELECT * FROM t_exercice_exo WHERE exo_id = %(exo)s", {'exo':exo_id})
-    return mycursor.fetchall()
+    return mycursor.fetchone()
 
 def repondre(temps,commentaire,correction,exo_id, util_id):
     if correction == '0' :
