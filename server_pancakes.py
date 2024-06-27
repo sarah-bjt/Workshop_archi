@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import model, json
 
 app = Flask(__name__)
@@ -100,8 +100,12 @@ def repondre_exo(util_id,exo_id):
 
 @app.route("/recompense")
 def recompense():
-    return {"Récompenses Pancakes":[{"type":"mini", "temps minimum":"30min"},{"type":"normal", "temps minimum":"1h30min"},{"type":"mega", "temps minimum":"3h"}]}
+    return jsonify({"Récompenses Pancakes":[{"type":"mini", "temps minimum":"30min"},{"type":"normal", "temps minimum":"1h30min"},{"type":"mega", "temps minimum":"3h"}]})
 
 @app.route("/bonus")
 def bonus():
-    return {"Bonus Toppings":[{"type":"sucre glace", "temps minimum":"3h30min"},{"type":"sirop d'erable", "temps minimum":"4h30min"},{"type":"eclats de chocolat", "temps minimum":"6h"}]}
+    return jsonify({"Bonus Toppings":[{"type":"sucre glace", "temps minimum":"3h30min"},{"type":"sirop d'erable", "temps minimum":"4h30min"},{"type":"eclats de chocolat", "temps minimum":"6h"}]})
+
+@app.route("/reclamation_recompenses")
+def reclamation():
+    return render_template("recompense.html")
