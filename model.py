@@ -37,7 +37,7 @@ def recapitulatif_cours_temps(user_id):
 def temps_total(user_id):
     mycursor.execute("SELECT SUM(RPS.rps_tps_passe) FROM t_reponse_rps AS RPS WHERE RPS.cpt_identifiant=%(id)s;", {'id': user_id})
     temps = mycursor.fetchone()[0]/60
-    return round(temps, 2)
+    return round(temps, 1)
 
 def temps_journalier(user_id):
     mycursor.execute("SELECT RPS.rps_date, SUM(RPS.rps_tps_passe) FROM t_exercice_exo AS EXO JOIN t_reponse_rps AS RPS ON EXO.exo_id = RPS.exo_id JOIN t_compte_cpt AS CPT ON RPS.cpt_identifiant = CPT.cpt_identifiant WHERE CPT.cpt_identifiant = %(id)s GROUP BY RPS.rps_date ORDER BY RPS.rps_date ASC;", {'id': user_id})
