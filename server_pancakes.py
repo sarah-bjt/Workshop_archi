@@ -96,3 +96,7 @@ def repondre_exo(util_id,exo_id):
 @app.route("/recompense")
 def recompense():
     return {"Récompenses Pancakes":[{"type":"mini", "temps minimum":"30min"},{"type":"normal", "temps minimum":"1h30min"},{"type":"mega", "temps minimum":"3h"}]}
+
+@app.route("/bonus")
+def bonus():
+    return {"Bonus Toppings":[{"type":"sucre glace", "temps minimum":"3h30min"},{"type":"sirop d'erable", "temps minimum":"4h30min"},{"type":"eclats de chocolat", "temps minimum":"6h"}]}
