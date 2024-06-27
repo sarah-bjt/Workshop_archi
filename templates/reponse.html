@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>{{nom_exo}}</title>
+    <title>{{exo[1]}}</title>
   </head>
   <body>
-    <h1> {{nom_exo}}, niveau {{niveau_exo}}</h1>
-    <p>{{enonce_exo}}</p>
+    <h1> {{exo[1]}}, niveau {{exo[2]}}</h1>
+    <p>{{exo[3]}}</p>
 
     <form action="/repondre/{{util_id}}/{{exo_id}}" method="POST">
       <input type="hidden" name="form_type" value="repondre">
@@ -15,7 +15,7 @@
       </label><br>
       
       <label for="commentaire">commentaire</label><br>
-      <textarea id="commentaire" name="commentaire" rows="10" cols="60">Session du {{date_exo}}</textarea><br>
+      <textarea id="commentaire" name="commentaire" rows="10" cols="60"></textarea><br>
 
       <label for="correction">Correction</label>
       <select id="correction" name="correction">

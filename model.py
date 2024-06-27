@@ -46,8 +46,8 @@ def temps_par_exo(user_id) :
   mycursor.execute("SELECT exo_nom, crs_nom, rps_tps_passe FROM t_cours_crs AS CRS JOIN t_exercice_exo AS EXO ON CRS.crs_id=EXO.crs_id JOIN t_reponse_rps AS RPS ON EXO.exo_id = RPS.exo_id JOIN t_compte_cpt AS CPT ON RPS.cpt_identifiant = CPT.cpt_identifiant WHERE CPT.cpt_identifiant=%(id)s ORDER BY exo_nom ASC;", {'id': user_id})
   return mycursor.fetchall()
 
-def recuperation_exercices():
-    mycursor.execute("SELECT * FROM t_exercice_exo;")
+def recuperation_exercices(util_id):
+    mycursor.execute("SELECT * FROM t_exercice_exo AS EXO JOIN t_education_educ AS EDUC ON EDUC.crs_id= EXO.crs_id WHERE EDUC.cpt_identifiant = %(id)s;", {'id':util_id})
     return mycursor.fetchall()
 
 def creation_compte_profil(email, password, name, surname):
@@ -55,6 +55,11 @@ def creation_compte_profil(email, password, name, surname):
     mydb.commit()
     mycursor.execute("INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_statut, pfl_date, cpt_identifiant) VALUES (%(na)s, %(su)s, 'ETUDIANT', CURDATE(), %(em)s)", {'na': name, 'su': surname, 'em': email})
     mydb.commit()
+
+
+def info_exo(exo_id):
+    mycursor.execute("SELECT * FROM t_exercice_exo WHERE exo_id = %(exo)s", {'exo':exo_id})
+    return mycursor.fetchall()
 
 def repondre(temps,commentaire,correction,exo_id, util_id):
     if correction == '0' :
@@ -66,7 +71,7 @@ def repondre(temps,commentaire,correction,exo_id, util_id):
     mydb.commit()
 
 def toutes_les_reps(exo_id, util_id):
-    mycursor.execute("SELECT * FROM t_reponse_rps WHERE cpt_identifiant = %(id)s;", {'id':util_id})
+    mycursor.execute("SELECT * FROM t_reponse_rps WHERE cpt_identifiant = %(id)s AND exo_id = %(exo)s;", {'id':util_id, 'exo':exo_id })
     return mycursor.fetchall()
 
 def modifier_correction(util_id, reponse_id, correction):
