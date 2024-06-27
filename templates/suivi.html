@@ -30,9 +30,12 @@
             <td>Date</td>
             <td>Temps_total_journalier</td>
           </tr>
+          {% for cours in recapitulatif %}
           <tr>
-            <td></td>
+            <td>{{suivi_journalier[0]}}</td>
+            <td>{{suivi_journalier[1]}}</td>
           </tr>
+          {% endfor %}
         </table>
       </div>
       <div>
