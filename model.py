@@ -66,7 +66,7 @@ def repondre(temps,commentaire,correction,exo_id, util_id):
     mydb.commit()
 
 def toutes_les_reps(exo_id, util_id):
-    mycursor.execute("SELECT * FROM t_reponse_rps WHERE cpt_identifiant = %(id)s;", {'id':util_id})
+    mycursor.execute("SELECT * FROM t_reponse_rps WHERE cpt_identifiant = %(id)s AND exo_id = %(exo)s;", {'id':util_id, 'exo':exo_id })
     return mycursor.fetchall()
 
 def modifier_correction(util_id, reponse_id, correction):
