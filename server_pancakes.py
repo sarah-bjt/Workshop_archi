@@ -76,17 +76,22 @@ def creation_compte():
         model.creation_compte_profil(email, password, name, surname)
         return redirect(url_for('profil', util_id=email))
     return render_template('creation.html')
-
-@app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
+    
+app.route("/repondre/<util_id>/<exo_id>", methods=['GET', 'POST'])
 def repondre_exo(util_id,exo_id):
     #result= model.recuperation_exercice(exo_id)
     if request.method == "POST":
-        temps = request.form['temps']
-        commentaire = request.form['commentaire']
-        correction = request.form['correction']
-        model.repondre(temps,commentaire,correction,exo_id, util_id)
-        return redirect(url_for('suivi', util_id=util_id))
+        form_type = request.form['form_type']
+        if form_type == "repondre":
+            temps = request.form['temps']
+            commentaire = request.form['commentaire']
+            correction = request.form['correction']
+            model.repondre(temps,commentaire,correction,exo_id, util_id)
+        elif form_type== "modifier_corrige" :
+            correction = request.form['correction']
+            model.modifier_correction(util_id, reponse_id, correction,) 
     return render_template('reponse.html', util_id=util_id, exo_id=exo_id) #, info_exo=result
+
 
 @app.route("/recompense")
 def recompense():
