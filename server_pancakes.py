@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-import model
+import model, json
 
 app = Flask(__name__)
 
@@ -87,3 +87,7 @@ def repondre_exo(util_id,exo_id):
         model.repondre(temps,commentaire,correction,exo_id, util_id)
         return redirect(url_for('suivi', util_id=util_id))
     return render_template('reponse.html', util_id=util_id, exo_id=exo_id) #, info_exo=result
+
+@app.route("/recompense")
+def recompense():
+    return {"Récompenses Pancakes":[{"type":"mini", "temps minimum":"30min"},{"type":"normal", "temps minimum":"1h30min"},{"type":"mega", "temps minimum":"3h"}]}
