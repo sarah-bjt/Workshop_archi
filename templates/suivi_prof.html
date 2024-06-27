@@ -47,12 +47,14 @@
         <table border="1" width='100%'>
           <tr>
             <td>Nom exercice</td>
+            <td>Matière</td>
             <td>Temps</td>
           </tr>
           {% for suivi_exo in suivi_exo %}
           <tr>
             <td>{{suivi_exo[0]}}</td>
             <td>{{suivi_exo[1]}}</td>
+            <td>{{suivi_exo[2]}}</td>
           </tr>
           {% endfor %}
         </table>
