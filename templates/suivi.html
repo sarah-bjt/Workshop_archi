@@ -25,6 +25,8 @@
         </tr>
         {% endfor %}
         </table>
+      </div>
+      <div>
         <table border="1" width='100%'>
           <tr>
             <td>Date</td>
@@ -34,6 +36,20 @@
           <tr>
             <td>{{suivi_journalier[0]}}</td>
             <td>{{suivi_journalier[1]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div>
+        <table border="1" width='100%'>
+          <tr>
+            <td>Nom exercice</td>
+            <td>Temps</td>
+          </tr>
+          {% for suivi_exo in suivi_exo %}
+          <tr>
+            <td>{{suivi_exo[0]}}</td>
+            <td>{{suivi_exo[1]}}</td>
           </tr>
           {% endfor %}
         </table>
