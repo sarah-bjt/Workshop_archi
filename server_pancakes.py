@@ -106,6 +106,6 @@ def recompense():
 def bonus():
     return jsonify({"Bonus Toppings":[{"type":"sucre glace", "temps minimum":"3h30min"},{"type":"sirop d'erable", "temps minimum":"4h30min"},{"type":"eclats de chocolat", "temps minimum":"6h"}]})
 
-@app.route("/reclamation_recompenses")
-def reclamation():
-    return render_template("recompense.html")
+@app.route("/reclamation_recompenses/<util_id>")
+def reclamation(util_id):
+    return render_template("recompense.html", util_id=util_id)
