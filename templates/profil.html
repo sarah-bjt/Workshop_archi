@@ -38,15 +38,18 @@
         </form>
     </div>
     <div>
+      <p><b>ATTENTION ! </b>une fois que vous aurez cliqué, le compte sera supprimé définitivement !</p>
       <form action="/profil/{{util_id}}" method="POST">
         <input type="hidden" name="form_type" value="supprimer">
         <input type="submit" value="Supprimer le compte">
       </form>
+      <p></p>
+      <br>
     </div>
     <div>
-      <a href="/suivi/{{util_id}}">Suivi</a>
-      <a href="/deconnexion">Se déconnecter</a>
-      <a href="/devoir/{{util_id}}">Vos devoirs</a>
+      <a href="/suivi/{{util_id}}" style="margin: 10px;">Suivi</a>
+      <a href="/deconnexion" style="margin: 10px;">Se déconnecter</a>
+      <a href="/devoir/{{util_id}}" style="margin: 10px;">Vos devoirs</a>
     </div>
   </body>
 </html>

@@ -52,7 +52,7 @@
           </tr>
           {% for suivi_exo in suivi_exo %}
           <tr>
-            <td>{{suivi_exo[0]}}</td>
+            <td><a href="/repondre/{{util_id}}/{{suivi_exo[3]}}">{{suivi_exo[0]}}</a></td>
             <td>{{suivi_exo[1]}}</td>
             <td>{{suivi_exo[2]}}</td>
           </tr>
@@ -60,13 +60,13 @@
         </table>
       </div>
       <div>
-        <a href="/profil/{{util_id}}">Profil</a>
-        <a href="/deconnexion">Se déconnecter</a>
-        <a href="/devoir/{{util_id}}">Vos devoirs</a>
+        <a href="/profil/{{util_id}}" style="margin: 10px;">Profil</a>
+        <a href="/deconnexion" style="margin: 10px;">Se déconnecter</a>
+        <a href="/devoir/{{util_id}}" style="margin: 10px;">Vos devoirs</a>
       </div>
       <div>
-        <a href="/recompense">Les badges numériques que vous pouvez réclamer</a>
-        <a href="/bonus">Les badges bonus numériques que vous pouvez réclamer</a>
+        <a href="/recompense" style="margin: 10px;">Les badges numériques que vous pouvez réclamer</a>
+        <a href="/bonus" style="margin: 10px;">Les badges bonus numériques que vous pouvez réclamer</a>
       </div>
   </body>
 </html>
