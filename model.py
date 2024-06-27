@@ -66,15 +66,14 @@ def repondre(temps,commentaire,correction,exo_id, util_id):
     mydb.commit()
 
 def toutes_les_reps(exo_id, util_id):
-    mycursor.execute("SELECT rps_tps_passe, rps_commentaire, rps_correction, rps_date FROM t_reponse_rps WHERE cpt_identifiant = %(id)s;", {'id':util_id})
+    mycursor.execute("SELECT * FROM t_reponse_rps WHERE cpt_identifiant = %(id)s;", {'id':util_id})
     return mycursor.fetchall()
 
 def modifier_correction(util_id, reponse_id, correction):
     if correction=='0' :
-        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'PAS CORRIGE' WHERE rsp_id=%(repon_id)s, cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
+        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'PAS CORRIGE' WHERE rps_id=%(repon_id)s AND cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
     elif correction=='1' :
-        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'VRAI' WHERE rsp_id=%(repon_id)s, cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
+        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'VRAI' WHERE rps_id=%(repon_id)s AND cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
     elif correction=='2' :
-        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'FAUX' WHERE rsp_id=%(repon_id)s, cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
+        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'FAUX' WHERE rps_id=%(repon_id)s AND cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
     mydb.commit()
-    
