@@ -56,6 +56,11 @@ def creation_compte_profil(email, password, name, surname):
     mycursor.execute("INSERT INTO t_profil_pfl (pfl_nom, pfl_prenom, pfl_statut, pfl_date, cpt_identifiant) VALUES (%(na)s, %(su)s, 'ETUDIANT', CURDATE(), %(em)s)", {'na': name, 'su': surname, 'em': email})
     mydb.commit()
 
+
+def info_exo(exo_id):
+    mycursor.execute("SELECT * FROM t_exercice_exo WHERE exo_id = %(exo)s", {'exo':exo_id})
+    return mycursor.fetchall()
+
 def repondre(temps,commentaire,correction,exo_id, util_id):
     if correction == '0' :
         mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'PAS CORRIGE', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
