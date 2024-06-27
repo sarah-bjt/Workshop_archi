@@ -65,6 +65,20 @@ def repondre(temps,commentaire,correction,exo_id, util_id):
         mycursor.execute("INSERT INTO t_reponse_rps (rps_tps_passe, rps_correction, rps_commentaire, rps_date, exo_id, cpt_identifiant) VALUES (%(tps)s, 'FAUX', %(comm)s, CURDATE(), %(ex)s, %(id)s);", {'tps': temps, 'comm': commentaire, 'ex': exo_id, 'id':util_id})
     mydb.commit()
 
+def toutes_les_reps(exo_id, util_id):
+    mycursor.execute("SELECT rps_tps_passe, rps_commentaire, rps_correction, rps_date FROM t_reponse_rps WHERE cpt_identifiant = %(id)s;", {'id':util_id})
+
+
+def modifier_correction(util_id, reponse_id, correction):
+    if correction='0' :
+        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'PAS CORRIGE' WHERE rsp_id=%(repon_id)s, cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
+    if correction='1' :
+        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'VRAI' WHERE rsp_id=%(repon_id)s, cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
+    if correction='2' :
+        mycursor.execute("UPDATE t_reponse_rps SET rps_correction= 'FAUX' WHERE rsp_id=%(repon_id)s, cpt_identifiant=%(id)s;", {'repon_id': reponse_id, 'id': util_id})
+    mydb.commit()
+    
+
 
 # def recuperation_exercice(id_exo):
 #     mycursor.execute("SELECT * FROM t_exercice_exo; WHERE exo_id=id_exo)
