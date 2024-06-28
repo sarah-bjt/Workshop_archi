@@ -3,37 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <title>Suivi</title>
-    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='suivi_prof.css') }}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
-    
-    <p>Suivi de {{etudiant[1]}} {{etudiant[2]}}</p>
-    <p>Cet élève a étudié {{temps_total}} heures cette année</p>
-
-    
-      <div>
+    <div class="container">
+      <div class="header">
+        <p>Suivi de {{etudiant[1]}} {{etudiant[2]}}</p>
+        <p>Cet élève a étudié {{temps_total}} heures cette année</p>
+      </div>
+      <div class="section">
         <h2>Bilan général</h2>
-        <table border="1" width='100%'>
-        <tr>
-          <td>Nom </td>
-          <td>Semestre</td>
-          <td>Temps passé à étudier (en minutes)</td>
-        </tr>
-        {% for cours in recapitulatif %}
-        <tr>
-          <td>{{cours[0]}}</td>
-          <td>{{cours[1]}}</td>
-          <td>{{cours[2]}}</td>
-        </tr>
-        {% endfor %}
+        <table>
+          <tr>
+            <th>Nom</th>
+            <th>Semestre</th>
+            <th>Temps passé à étudier (en minutes)</th>
+          </tr>
+          {% for cours in recapitulatif %}
+          <tr>
+            <td>{{cours[0]}}</td>
+            <td>{{cours[1]}}</td>
+            <td>{{cours[2]}}</td>
+          </tr>
+          {% endfor %}
         </table>
       </div>
-      <div>
+      <div class="section">
         <h2>Bilan journalier</h2>
-        <table border="1" width='100%'>
+        <table>
           <tr>
-            <td>Date</td>
-            <td>Temps_total_journalier (en minutes)</td>
+            <th>Date</th>
+            <th>Temps total journalier (en minutes)</th>
           </tr>
           {% for suivi_journalier in suivi_journalier %}
           <tr>
@@ -43,13 +44,13 @@
           {% endfor %}
         </table>
       </div>
-      <div>
+      <div class="section">
         <h2>Bilan par exercice</h2>
-        <table border="1" width='100%'>
+        <table>
           <tr>
-            <td>Nom exercice</td>
-            <td>Matière</td>
-            <td>Temps (en minutes)</td>
+            <th>Nom exercice</th>
+            <th>Matière</th>
+            <th>Temps (en minutes)</th>
           </tr>
           {% for suivi_exo in suivi_exo %}
           <tr>
@@ -60,8 +61,9 @@
           {% endfor %}
         </table>
       </div>
-      <div>
-        <a href="/profil/{{util_id}}" style="margin: 10px;">Retour au profil</a>
+      <div class="footer">
+        <a href="/profil/{{util_id}}">Retour au profil</a>
       </div>
+    </div>
   </body>
 </html>
