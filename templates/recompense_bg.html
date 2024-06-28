@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Récompenses</title>
+        <link rel="stylesheet" href="../static/recompense.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Vos badges Pancakes que vous pouvez réclamer</h1>
+            <div class="section">
+                <h3>Les Badges</h3>
+                <div id="recompensesPancakes" class="rewards">
+                    <!-- Les récompenses Pancakes seront insérées ici -->
+                </div>
+            </div>
+            <div class="section">
+                <h3>Les Toppings Bonus</h3>
+                <div id="bonusToppings" class="rewards">
+                    <!-- Les bonus Toppings seront insérés ici -->
+                </div>
+            </div>
+            <div class="links">
+                <a href="/profil/{{util_id}}" style="margin: 10px;">Profil</a>
+                <a href="/deconnexion" style="margin: 10px;">Se déconnecter</a>
+            </div>
+        </div>
+
+        <script>
+            async function fetchRecompensesPancakes() {
+                try {
+                    const response = await fetch('/recompense');
+                    const data = await response.json();
+                    console.log(data); 
+                    const recompensesPancakesDiv = document.getElementById('recompensesPancakes');
+                    data['Récompenses Pancakes'].forEach(recompense => {
+                        recompensesPancakesDiv.innerHTML += `<p>Type: ${recompense.type}, Temps minimum: ${recompense['temps minimum']}</p>`;
+                    });
+                } catch (error) {
+                    console.error('Error fetching recompenses pancakes:', error);
+                }
+            }
+
+            async function fetchBonusToppings() {
+                try {
+                    const response = await fetch('/bonus');
+                    const data = await response.json();
+                    console.log(data); 
+                    const bonusToppingsDiv = document.getElementById('bonusToppings');
+                    data['Bonus Toppings'].forEach(bonus => {
+                        bonusToppingsDiv.innerHTML += `<p>Type: ${bonus.type}, Temps minimum: ${bonus['temps minimum']}</p>`;
+                    });
+                } catch (error) {
+                    console.error('Error fetching bonus toppings:', error);
+                }
+            }
+
+            fetchRecompensesPancakes();
+            fetchBonusToppings();
+        </script>
+    </body>
+</html>

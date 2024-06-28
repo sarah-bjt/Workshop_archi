@@ -1,0 +1,71 @@
+/* style.css */
+body {
+    background-color: #2b3a1e; /* Vert foncé */
+    color: #f3e9d2; /* Couleur crème pour le texte */
+    font-family: 'Raleway', sans-serif; /* Police similaire à celle de l'image */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #344e41; /* Couleur légèrement différente pour le conteneur */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+    width: 80%;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #f3e9d2; /* Couleur crème */
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.8em;
+    color: #e6ccb2; /* Couleur crème légèrement plus sombre */
+    margin-bottom: 15px;
+}
+
+.rewards {
+    background-color: #2b3a1e; /* Fond vert foncé */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+}
+
+.rewards p {
+    font-size: 1.2em;
+    color: #f3e9d2; /* Couleur crème */
+    margin: 10px 0;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.links a {
+    color: #2b3a1e; /* Vert foncé */
+    background-color: #f3e9d2; /* Couleur crème */
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.links a:hover {
+    background-color: #e6ccb2; /* Couleur crème légèrement plus sombre */
+    color: #344e41; /* Vert foncé légèrement différent */
+}
