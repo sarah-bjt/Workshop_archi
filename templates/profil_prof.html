@@ -3,47 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <title>Profil</title>
-    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="../static/profil_prof.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
-        <h1>Bonjour {{professeur[1]}} {{professeur[2]}}</h1>
-      <div>
-        <table border="1" width='100%'>
+    <div class="container">
+      <h1>Bonjour {{professeur[1]}} {{professeur[2]}}</h1>
+      <div class="table-container">
+        <table>
           <tr>
             <th>Mail</th>
             <th>Age</th>
             <th>Statut</th>
           </tr>
-        <tr>
-          <td>{{util_id}}</td>
-          <td>{{professeur[3]}}</td>
-          <td>{{professeur[5]}}</td>
-        </tr>
-      </table>
+          <tr>
+            <td>{{util_id}}</td>
+            <td>{{professeur[3]}}</td>
+            <td>{{professeur[5]}}</td>
+          </tr>
+        </table>
       </div>
-      <div>
+      <div class="form-container">
         <h2>Modifications</h2>
         <form action="/profil/{{util_id}}" method="POST">
-          <label for="nom">Nouveau nom</label>
-          <input type="varchar" name="nom" value={{professeur[1]}}>
-          <label for="prenom">Nouveau prénom</label>
-          <input type="varchar" name="prenom" value={{professeur[2]}}>
-          <label for="age">Nouvel âge</label>
-          <input type="number" name="age" value={{professeur[3]}}>
-          <input type="submit">
+          <div class="form-group">
+            <label for="nom">Nouveau nom</label>
+            <input type="varchar" name="nom" value="{{professeur[1]}}">
+          </div>
+          <div class="form-group">
+            <label for="prenom">Nouveau prénom</label>
+            <input type="varchar" name="prenom" value="{{professeur[2]}}">
+          </div>
+          <div class="form-group">
+            <label for="age">Nouvel âge</label>
+            <input type="number" name="age" value="{{professeur[3]}}">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Mettre à jour">
+          </div>
         </form>
       </div>
-      <div>
+      <div class="table-container">
         <h2>Liste des élèves</h2>
-        <table border="1" width='100%'>
+        <table>
           <tr>
-            <td>Nom</td>
-            <td>Prénom</td>
-            <td>Age</td>
-            <td>Classe</td>
-            <td>Suivi</td>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Age</th>
+            <th>Classe</th>
+            <th>Suivi</th>
           </tr>
-          
           {% for etudiant in etudiants %}
           <tr>
             <td>{{etudiant[1]}}</td>
@@ -55,8 +64,9 @@
           {% endfor %}
         </table>
       </div>
-      <div>
-        <a href="/deconnexion" style="margin: 10px;">Se déconnecter</a>
+      <div class="back-link">
+        <a href="/deconnexion">Se déconnecter</a>
       </div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profil</title>
+    <link rel="stylesheet" href="../static/style.css"/>
+  </head>
+  <body>
+        <h1>Bonjour {{professeur[1]}} {{professeur[2]}}</h1>
+      <div>
+        <table border="1" width='100%'>
+          <tr>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>Statut</th>
+          </tr>
+        <tr>
+          <td>{{util_id}}</td>
+          <td>{{professeur[3]}}</td>
+          <td>{{professeur[5]}}</td>
+        </tr>
+      </table>
+      </div>
+      <div>
+        <h2>Modifications</h2>
+        <form action="/profil/{{util_id}}" method="POST">
+          <label for="nom">Nouveau nom</label>
+          <input type="varchar" name="nom" value={{professeur[1]}}>
+          <label for="prenom">Nouveau prénom</label>
+          <input type="varchar" name="prenom" value={{professeur[2]}}>
+          <label for="age">Nouvel âge</label>
+          <input type="number" name="age" value={{professeur[3]}}>
+          <input type="submit">
+        </form>
+      </div>
+      <div>
+        <h2>Liste des élèves</h2>
+        <table border="1" width='100%'>
+          <tr>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Age</td>
+            <td>Classe</td>
+            <td>Suivi</td>
+          </tr>
+          
+          {% for etudiant in etudiants %}
+          <tr>
+            <td>{{etudiant[1]}}</td>
+            <td>{{etudiant[2]}}</td>
+            <td>{{etudiant[3]}}</td>
+            <td>{{etudiant[4]}}</td>
+            <td><a href="/suivi_prof/{{etudiant[7]}}/{{util_id}}">Suivi</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div>
+        <a href="/deconnexion" style="margin: 10px;">Se déconnecter</a>
+      </div>
+  </body>
+</html>
