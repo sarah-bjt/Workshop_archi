@@ -3,30 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <title>Devoir</title>
-    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="../static/devoir.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Vos exercices</h1>
-    <table border="1" width='100%'>
-      <tr>
-        <td>Matière</td>
-        <td>Nom</td>
-        <td>Niveau</td>
-        <td>Enoncé</td>
-      </tr>
-      
-      {% for exo in exos %}
-      <tr>
-        <td>{{exo[6]}}</td>
-        <td>{{exo[1]}}</td>
-        <td>{{exo[2]}}</td>
-        <td>{{exo[3]}}</td>
-        <td><a href="/repondre/{{util_id}}/{{exo[0]}}">répondre</a></td>
-      </tr>
-      {% endfor %}
-    </table>
-    <a href="/suivi/{{util_id}}" style="margin: 10px;">Suivi</a>
-    <a href="/profil/{{util_id}}" style="margin: 10px;">Profil</a>
-    <a href="/deconnexion" style="margin: 10px;">Se déconnecter</a>
+    <div class="container">
+      <h1>Vos exercices</h1>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Matière</th>
+              <th>Nom</th>
+              <th>Niveau</th>
+              <th>Enoncé</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for exo in exos %}
+            <tr>
+              <td>{{ exo[6] }}</td>
+              <td>{{ exo[1] }}</td>
+              <td>{{ exo[2] }}</td>
+              <td>{{ exo[3] }}</td>
+              <td><a href="/repondre/{{ util_id }}/{{ exo[0] }}">répondre</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="links">
+        <a href="/suivi/{{ util_id }}">Suivi</a>
+        <a href="/profil/{{ util_id }}">Profil</a>
+        <a href="/deconnexion">Se déconnecter</a>
+      </div>
+    </div>
   </body>
 </html>
