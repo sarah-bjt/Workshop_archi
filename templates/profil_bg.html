@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profil</title>
+    <link rel="stylesheet" href="../static/profil.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+        <h1>Bonjour {{etudiants[1]}} {{etudiants[2]}}</h1>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Mail</th>
+              <th>Age</th>
+              <th>Classe</th>
+              <th>Statut</th>
+            </tr>
+            <tr>
+              <td>{{util_id}}</td>
+              <td>{{etudiants[3]}}</td>
+              <td>{{etudiants[4]}}</td>
+              <td>{{etudiants[5]}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="form-container">
+          <h2>Modifications</h2>
+          <form action="/profil/{{util_id}}" method="POST">
+            <input type="hidden" name="form_type" value="modifier">
+            <label for="nom">Nouveau nom</label>
+            <input type="text" name="nom" value="{{etudiants[1]}}">
+            <label for="prenom">Nouveau prénom</label>
+            <input type="text" name="prenom" value="{{etudiants[2]}}">
+            <label for="age">Nouvel âge</label>
+            <input type="number" name="age" value="{{etudiants[3]}}">
+            <label for="classe">Nouvelle classe</label>
+            <input type="text" name="classe" value="{{etudiants[4]}}">
+            <input type="submit" value="Modifier">
+          </form>
+        </div>
+        <div class="delete-container">
+          <p><b>ATTENTION ! </b>Une fois que vous aurez cliqué, le compte sera supprimé définitivement !</p>
+          <form action="/profil/{{util_id}}" method="POST">
+            <input type="hidden" name="form_type" value="supprimer">
+            <input type="submit" value="Supprimer le compte">
+          </form>
+        </div>
+        <div class="links-container">
+          <a href="/suivi/{{util_id}}">Suivi</a>
+          <a href="/deconnexion">Se déconnecter</a>
+          <a href="/devoir/{{util_id}}">Vos devoirs</a>
+        </div>
+    </div>
+  </body>
+</html>
