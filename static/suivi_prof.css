@@ -1,0 +1,67 @@
+/* style.css */
+body {
+    background-color: #2b3a1e; /* Vert foncé */
+    color: #f3e9d2; /* Couleur crème pour le texte */
+    font-family: 'Raleway', sans-serif; /* Police similaire à celle de l'image */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #344e41; /* Couleur légèrement différente pour le conteneur */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.header p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #f3e9d2; /* Couleur crème */
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #f3e9d2; /* Couleur crème */
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #2b3a1e; /* Vert foncé */
+}
+
+.footer a {
+    color: #2b3a1e; /* Vert foncé */
+    background-color: #f3e9d2; /* Couleur crème */
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.footer a:hover {
+    background-color: #e6ccb2; /* Couleur crème légèrement plus sombre */
+    color: #344e41; /* Vert foncé légèrement différent */
+}
