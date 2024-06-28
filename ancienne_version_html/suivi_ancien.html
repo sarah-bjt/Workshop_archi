@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Suivi</title>
+    <link rel="stylesheet" href="../static/style.css"/>
+  </head>
+  <body>
+    
+    <h2>Le best of de l'année</h2>
+    <p>Vous avez étudiez {{temps_total}} heures cette année</p>
+
+    
+      <div>
+        <h2>Bilan général</h2>
+        <table border="1" width='100%'>
+        <tr>
+          <td>Nom </td>
+          <td>Semestre</td>
+          <td>Temps passé à étudier (en minutes)</td>
+        </tr>
+        {% for cours in recapitulatif %}
+        <tr>
+          <td>{{cours[0]}}</td>
+          <td>{{cours[1]}}</td>
+          <td>{{cours[2]}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+      </div>
+      <div>
+        <h2>Bilan journalier</h2>
+        <table border="1" width='100%'>
+          <tr>
+            <td>Date</td>
+            <td>Temps_total_journalier (en minutes)</td>
+          </tr>
+          {% for suivi_journalier in suivi_journalier %}
+          <tr>
+            <td>{{suivi_journalier[0]}}</td>
+            <td>{{suivi_journalier[1]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div>
+        <h2>Bilan par exercice</h2>
+        <table border="1" width='100%'>
+          <tr>
+            <td>Nom exercice</td>
+            <td>Matière</td>
+            <td>Temps (en minutes)</td>
+          </tr>
+          {% for suivi_exo in suivi_exo %}
+          <tr>
+            <td><a href="/repondre/{{util_id}}/{{suivi_exo[3]}}">{{suivi_exo[0]}}</a></td>
+            <td>{{suivi_exo[1]}}</td>
+            <td>{{suivi_exo[2]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div>
+        <a href="/profil/{{util_id}}" style="margin: 10px;">Profil</a>
+        <a href="/deconnexion" style="margin: 10px;">Se déconnecter</a>
+        <a href="/devoir/{{util_id}}" style="margin: 10px;">Vos devoirs</a>
+      </div>
+      <div>
+        <a href="/reclamation_recompenses/{{util_id}}">Voir les récompenses</a>
+      </div>
+  </body>
+</html>
