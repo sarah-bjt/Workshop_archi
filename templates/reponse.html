@@ -50,8 +50,8 @@
           <tbody>
             {% for reponse in reponses %}
             <tr>
-              <td>{{reponse[3]}}</td>
-              <td>{{reponse[0]}}</td>
+              <td>{{reponse[4]}}</td>
+              <td>{{reponse[1]}}</td>
               <td>{{reponse[2]}}, 
                 <form action="/repondre/{{util_id}}/{{exo_id}}" method="POST">
                   <input type="hidden" name="form_type" value="corriger">
@@ -67,7 +67,7 @@
                   <input type="submit" value="Valider" class="submit-button"/>
                 </form>
               </td>
-              <td>{{reponse[1]}}</td>
+              <td>{{reponse[3]}}</td>
             </tr>
             {% endfor %}
           </tbody>
