@@ -1,0 +1,78 @@
+/* style.css */
+body {
+    background-color: #2b3a1e; /* Vert foncé */
+    color: #f3e9d2; /* Couleur crème pour le texte */
+    font-family: 'Raleway', sans-serif; /* Police similaire à celle de l'image */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #344e41; /* Couleur légèrement différente pour le conteneur */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+    width: 300px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #f3e9d2; /* Couleur crème */
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 1.2em;
+    color: #f3e9d2; /* Couleur crème */
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #f3e9d2; /* Couleur crème */
+    color: #2b3a1e; /* Vert foncé */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #e6ccb2; /* Couleur crème légèrement plus sombre */
+    color: #344e41; /* Vert foncé légèrement différent */
+}
+
+.back-link {
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: #f3e9d2; /* Couleur crème */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.back-link a:hover {
+    color: #e6ccb2; /* Couleur crème légèrement plus sombre */
+}
