@@ -3,23 +3,36 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Création</title>
-    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="../static/creation.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Créer votre compte</h1>
-    <form action="/creation" method="POST">
-      <label for="email">E-mail</label>
-      <input type="email" name="email"/>
-      <label for="name">Nom</label>
-      <input type="text" name="name"/>
-      <label for="surname">Prénom</label>
-      <input type="text" name="surname"/>
-      <label for="password">Mot de passe</label>
-      <input type="password" name="password"/>
-      <input type="submit" value="Valider"/>
-    </form>
-    <div>
-      <a href="/">Retour à l'accueil</a>
+    <div class="container">
+      <h1>Créer votre compte</h1>
+      <form action="/creation" method="POST">
+        <div class="form-group">
+          <label for="email">🥞 E-mail</label>
+          <input type="email" name="email" id="email" required/>
+        </div>
+        <div class="form-group">
+          <label for="name">🥞 Nom</label>
+          <input type="text" name="name" id="name" required/>
+        </div>
+        <div class="form-group">
+          <label for="surname">🥞 Prénom</label>
+          <input type="text" name="surname" id="surname" required/>
+        </div>
+        <div class="form-group">
+          <label for="password">🥞 Mot de passe</label>
+          <input type="password" name="password" id="password" required/>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Valider"/>
+        </div>
+      </form>
+      <div class="back-link">
+        <a href="/">Retour à l'accueil</a>
+      </div>
     </div>
   </body>
 </html>
