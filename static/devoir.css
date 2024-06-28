@@ -1,0 +1,77 @@
+/* style.css */
+body {
+    background-color: #2b3a1e; /* Vert foncé */
+    color: #f3e9d2; /* Couleur crème pour le texte */
+    font-family: 'Raleway', sans-serif; /* Police similaire à celle de l'image */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #344e41; /* Couleur légèrement différente pour le conteneur */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+    width: 80%;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #f3e9d2; /* Couleur crème */
+    margin-bottom: 20px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #3e4c3a; /* Couleur légèrement plus foncée pour l'en-tête */
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #f3e9d2; /* Bordure crème */
+    text-align: left;
+}
+
+th {
+    color: #f3e9d2; /* Couleur crème */
+}
+
+td {
+    background-color: #3e4c3a; /* Couleur des cellules */
+    color: #f3e9d2; /* Couleur du texte */
+}
+
+a {
+    color: #2b3a1e; /* Vert foncé */
+    background-color: #f3e9d2; /* Couleur crème */
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+    background-color: #e6ccb2; /* Couleur crème légèrement plus sombre */
+    color: #344e41; /* Vert foncé légèrement différent */
+}
+
+.links {
+    margin-top: 20px;
+}
